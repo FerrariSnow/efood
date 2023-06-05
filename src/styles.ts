@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
-const cores = {
+export const cores = {
   principal: '#E66767',
   secundaria: '#FFEBD9',
   fundo: '#FFF8F1'
@@ -16,5 +16,11 @@ export const GlobalCSS = createGlobalStyle`
 
   body {
     background-color: ${cores.fundo}
+  }
+
+  .container {
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
   }
 `
