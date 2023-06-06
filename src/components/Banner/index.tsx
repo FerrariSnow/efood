@@ -1,5 +1,3 @@
-import Button from '../Button'
-import Tag from '../Tag'
 import { Container, TipoLoja, TituloLoja } from './styles'
 
 export type Props = {
