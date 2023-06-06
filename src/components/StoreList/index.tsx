@@ -3,6 +3,7 @@ import { Container } from './styles'
 
 import Sushi from '../../assets/images/loja1.png'
 import Pizza from '../../assets/images/loja2.png'
+import Product from '../Product'
 
 const StoreList = () => (
   <Container className="container">
