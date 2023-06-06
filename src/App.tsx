@@ -6,6 +6,7 @@ import HeaderSub from './components/HeaderSub'
 import { GlobalCSS } from './styles'
 import StoreList from './components/StoreList'
 import ProductList from './components/ProductList'
+import Footer from './components/Footer'
 
 const Rotas = createBrowserRouter([
   {
@@ -14,6 +15,7 @@ const Rotas = createBrowserRouter([
       <>
         <HeaderMain />
         <StoreList />
+        <Footer />
       </>
     )
   },
@@ -24,6 +26,7 @@ const Rotas = createBrowserRouter([
         <HeaderSub />
         <Banner fundo="sushi" loja="Hioki Sushi" tipo="Japonesa" />
         <ProductList lojas="sushi" />
+        <Footer />
       </>
     )
   },
@@ -38,6 +41,7 @@ const Rotas = createBrowserRouter([
           tipo="Italiana"
         />
         <ProductList lojas="pizza" />
+        <Footer />
       </>
     )
   }

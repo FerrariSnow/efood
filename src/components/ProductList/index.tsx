@@ -1,19 +1,19 @@
 import Product from '../Product'
-import { Container } from './styles'
+import { ContainerProducts } from './styles'
 
 type Props = {
   lojas: 'sushi' | 'pizza'
 }
 
 const ProductList = ({ lojas }: Props) => (
-  <Container className="container">
+  <ContainerProducts className="container">
     <Product loja={lojas} />
     <Product loja={lojas} />
     <Product loja={lojas} />
     <Product loja={lojas} />
     <Product loja={lojas} />
     <Product loja={lojas} />
-  </Container>
+  </ContainerProducts>
 )
 
 export default ProductList

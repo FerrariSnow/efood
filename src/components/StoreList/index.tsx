@@ -1,12 +1,12 @@
 import Store from '../Store'
-import { Container } from './styles'
+import { ContainerStores } from './styles'
 
 import Sushi from '../../assets/images/loja1.png'
 import Pizza from '../../assets/images/loja2.png'
 import Product from '../Product'
 
 const StoreList = () => (
-  <Container className="container">
+  <ContainerStores className="container">
     <Store
       imagem={Sushi}
       nome="Hioki Sushi"
@@ -52,10 +52,10 @@ const StoreList = () => (
       nome="La Dolce Vita Trattoria"
       nota="4,8"
       descricao="A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!"
-      tags={['Italiana']}
+      tags={['Destaque da semana', 'Italiana']}
       to="/pizza"
     />
-  </Container>
+  </ContainerStores>
 )
 
 export default StoreList
