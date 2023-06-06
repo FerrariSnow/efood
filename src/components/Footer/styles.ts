@@ -5,6 +5,7 @@ export const FooterContainer = styled.footer`
   background-color: ${cores.secundaria};
   padding: 40px;
   text-align: center;
+  color: ${cores.principal};
 
   img {
     margin-bottom: 32px;
