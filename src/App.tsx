@@ -4,12 +4,16 @@ import { Banner } from './components/Banner'
 import HeaderMain from './components/HeaderMain'
 import HeaderSub from './components/HeaderSub'
 import { GlobalCSS } from './styles'
+import StoreList from './components/StoreList'
 
 const Rotas = createBrowserRouter([
   {
     path: '/',
     element: (
-      <Banner fundo="italiana" loja="La Dolce Vita Trattoria" tipo="Italiana" />
+      <>
+        <HeaderMain />
+        <StoreList />
+      </>
     )
   }
 ])
