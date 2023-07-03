@@ -1,14 +1,23 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import {
+  BrowserRouter,
+  createBrowserRouter,
+  Route,
+  RouterProvider,
+  Routes
+} from 'react-router-dom'
 
 import { Banner } from './components/Banner'
 import HeaderMain from './components/HeaderMain'
 import HeaderSub from './components/HeaderSub'
 import { GlobalCSS } from './styles'
-import StoreList from './components/StoreList'
+
 import ProductList from './components/ProductList'
 import Footer from './components/Footer'
 
-const Rotas = createBrowserRouter([
+import RotasTEST from './routes'
+import StoreList from './components/StoreList'
+
+const RotasAntigas = createBrowserRouter([
   {
     path: '/',
     element: (
@@ -20,7 +29,7 @@ const Rotas = createBrowserRouter([
     )
   },
   {
-    path: '/sushi',
+    path: '/store',
     element: (
       <>
         <HeaderSub />
@@ -49,11 +58,12 @@ const Rotas = createBrowserRouter([
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <GlobalCSS />
-      <RouterProvider router={Rotas} />
+      {/* <RouterProvider router={Rotas} /> */}
       {/* <HeaderSub /> */}
-    </>
+      <RotasTEST />
+    </BrowserRouter>
   )
 }
 

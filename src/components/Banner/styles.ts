@@ -15,6 +15,7 @@ export const Container = styled.div<Omit<Props, 'loja' | 'tipo'>>`
   display: block;
   color: #fff;
   position: relative;
+  margin-bottom: 80px;
 `
 
 export const TituloLoja = styled.h2`

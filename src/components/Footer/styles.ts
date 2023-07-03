@@ -6,6 +6,7 @@ export const FooterContainer = styled.footer`
   padding: 40px;
   text-align: center;
   color: ${cores.principal};
+  margin-top: 120px;
 
   img {
     margin-bottom: 32px;

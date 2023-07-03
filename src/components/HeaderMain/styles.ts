@@ -8,6 +8,7 @@ export const HeaderContainer = styled.header`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 80px;
 `
 
 export const HeaderTitle = styled.h1`
