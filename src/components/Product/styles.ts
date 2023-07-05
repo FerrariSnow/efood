@@ -33,9 +33,13 @@ export const Modal = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
+
+  &.visible {
+    display: flex;
+  }
 
   .overlay {
     position: absolute;

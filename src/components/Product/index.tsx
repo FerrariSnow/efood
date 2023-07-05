@@ -11,15 +11,24 @@ import Sushi from '../../assets/images/sushi.png'
 import Pizza from '../../assets/images/pizza.png'
 import PizzaModal from '../../assets/images/modal-imagem.png'
 import Close from '../../assets/images/close.svg'
+import { useState } from 'react'
 
 type Props = {
   loja: 'sushi' | 'pizza'
 }
 
 const Product = ({ loja }: Props) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false)
+  const [modalUrl, setModalUrl] = useState('')
+
   return (
     <>
-      <CardProduct>
+      <CardProduct
+        onClick={() => {
+          setModalIsOpen(true)
+          setModalUrl(PizzaModal)
+        }}
+      >
         <img src={Pizza} alt="" />
         <TitleProduct>Pizza Marguerita</TitleProduct>
         <DescriptionProduct>
@@ -30,10 +39,10 @@ const Product = ({ loja }: Props) => {
           Adicionar ao carrinho
         </Button>
       </CardProduct>
-      <Modal>
+      <Modal className={modalIsOpen ? 'visible' : ''}>
         <ModalContent className="container">
           <div className="modal-img">
-            <img src={PizzaModal} alt="Imagem do produto" />
+            <img src={modalUrl} alt="Imagem do produto" />
           </div>
           <div className="modal-info">
             <TitleProduct>Pizza Marguerita</TitleProduct>
@@ -57,10 +66,10 @@ const Product = ({ loja }: Props) => {
             </Button>
           </div>
           <div className="close">
-            <img src={Close} alt="" />
+            <img src={Close} alt="" onClick={() => setModalIsOpen(false)} />
           </div>
         </ModalContent>
-        <div className="overlay"></div>
+        <div className="overlay" onClick={() => setModalIsOpen(false)}></div>
       </Modal>
     </>
   )
