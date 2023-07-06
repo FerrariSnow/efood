@@ -7,10 +7,11 @@ import StoreList from '../../components/StoreList'
 export type StoreType = {
   id: number
   titulo: string
-  destacado: boolean
+  destacado?: boolean
   tipo: string
-  avaliacao: number
+  avaliacao: string
   descricao: string
+  capa: string
   cardapio: {
     id: number
     foto: string
@@ -33,7 +34,7 @@ const Home = () => {
   return (
     <>
       <HeaderMain />
-      <StoreList />
+      <StoreList stores={stores} />
       <Footer />
     </>
   )

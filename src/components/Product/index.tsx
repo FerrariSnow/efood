@@ -7,17 +7,21 @@ import {
   TitleProduct
 } from './styles'
 
+// import { StoreType } from '../Home'
+
 import Sushi from '../../assets/images/sushi.png'
 import Pizza from '../../assets/images/pizza.png'
 import PizzaModal from '../../assets/images/modal-imagem.png'
 import Close from '../../assets/images/close.svg'
 import { useState } from 'react'
+import Store from '../Store'
+import { StoreType } from '../../pages/Home'
 
-type Props = {
-  loja: 'sushi' | 'pizza'
+export type Props = {
+  storesProducts: StoreType[]
 }
 
-const Product = ({ loja }: Props) => {
+const Product = ({ storesProducts }: Props) => {
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [modalUrl, setModalUrl] = useState('')
 
@@ -30,11 +34,8 @@ const Product = ({ loja }: Props) => {
         }}
       >
         <img src={Pizza} alt="" />
-        <TitleProduct>Pizza Marguerita</TitleProduct>
-        <DescriptionProduct>
-          A clássica Marguerita: molho de tomate suculento, mussarela derretida,
-          manjericão fresco e um toque de azeite. Sabor e simplicidade!
-        </DescriptionProduct>
+        <TitleProduct>{}</TitleProduct>
+        <DescriptionProduct>sdsd</DescriptionProduct>
         <Button type="button" title="Adicionar produto ao carrinho">
           Adicionar ao carrinho
         </Button>

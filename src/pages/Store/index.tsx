@@ -24,8 +24,8 @@ const StorePage = () => {
   return (
     <>
       <HeaderSub />
-      <Banner fundo="italiana" loja="La Dolce Vita Trattoria" tipo="Italiana" />
-      <ProductList lojas="pizza" />
+      <Banner fundo={store.capa} loja={store.titulo} tipo={store.tipo} />
+      {/* <ProductList stores={store} /> */}
       <Footer />
     </>
   )

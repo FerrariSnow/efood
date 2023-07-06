@@ -1,13 +1,13 @@
 import { Container, TipoLoja, TituloLoja } from './styles'
 
 export type Props = {
-  fundo: 'italiana' | 'sushi'
+  fundo: string
   loja: string
   tipo: string
 }
 
 export const Banner = ({ fundo, loja, tipo }: Props) => (
-  <Container fundo={fundo}>
+  <Container style={{ backgroundImage: `url(${fundo})` }} fundo={fundo}>
     <div className="container">
       <TipoLoja>{tipo}</TipoLoja>
       <TituloLoja>{loja}</TituloLoja>

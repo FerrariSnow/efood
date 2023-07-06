@@ -6,10 +6,9 @@ import Sushi from '../../assets/images/bannerSushi.png'
 import Pizzaria from '../../assets/images/bannerPizza.png'
 
 export const Container = styled.div<Omit<Props, 'loja' | 'tipo'>>`
-  background-image: ${(props) =>
-    props.fundo === 'sushi' ? `url(${Sushi})` : `url(${Pizzaria})`};
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   height: 280px;
   width: 100%;
   display: block;
