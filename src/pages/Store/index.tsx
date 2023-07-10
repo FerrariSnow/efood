@@ -35,7 +35,7 @@ const StorePage = () => {
     <>
       <HeaderSub />
       <Banner store={stores} />
-      <ProductList stores={stores.cardapio} />
+      {/* <ProductList stores={stores.cardapio} /> */}
 
       <Footer />
     </>
