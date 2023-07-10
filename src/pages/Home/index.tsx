@@ -3,6 +3,7 @@ import { Banner } from '../../components/Banner'
 import HeaderMain from '../../components/HeaderMain'
 import Footer from '../../components/Footer'
 import StoreList from '../../components/StoreList'
+import Product from '../../components/Product'
 
 export type StoreType = {
   id: number
@@ -10,8 +11,6 @@ export type StoreType = {
   destacado?: boolean
   tipo: string
   avaliacao: string
-  descricao: string
-  capa: string
   cardapio: {
     id: number
     foto: string
@@ -20,6 +19,8 @@ export type StoreType = {
     descricao: string
     porcao: string
   }
+  descricao: string
+  capa: string
 }
 
 const Home = () => {

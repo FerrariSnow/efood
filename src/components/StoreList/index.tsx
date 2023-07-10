@@ -1,8 +1,5 @@
 import Store from '../Store'
 import { ContainerStores } from './styles'
-
-import Sushi from '../../assets/images/loja1.png'
-import Pizza from '../../assets/images/loja2.png'
 import { StoreType } from '../../pages/Home'
 
 export type Props = {

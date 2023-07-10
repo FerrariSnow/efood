@@ -1,16 +1,21 @@
+import { StoreType } from '../../pages/Home'
 import { Container, TipoLoja, TituloLoja } from './styles'
 
+// export type Props = {
+//   fundo: string
+//   loja: string
+//   tipo: string
+// }
+
 export type Props = {
-  fundo: string
-  loja: string
-  tipo: string
+  store: StoreType
 }
 
-export const Banner = ({ fundo, loja, tipo }: Props) => (
-  <Container style={{ backgroundImage: `url(${fundo})` }} fundo={fundo}>
+export const Banner = ({ store }: Props) => (
+  <Container style={{ backgroundImage: `url(${store.capa})` }}>
     <div className="container">
-      <TipoLoja>{tipo}</TipoLoja>
-      <TituloLoja>{loja}</TituloLoja>
+      <TipoLoja>{store.tipo}</TipoLoja>
+      <TituloLoja>{store.titulo}</TituloLoja>
     </div>
   </Container>
 )
