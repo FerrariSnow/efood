@@ -1,12 +1,6 @@
 import { StoreType } from '../../pages/Home'
 import { Container, TipoLoja, TituloLoja } from './styles'
 
-// export type Props = {
-//   fundo: string
-//   loja: string
-//   tipo: string
-// }
-
 export type Props = {
   store: StoreType
 }

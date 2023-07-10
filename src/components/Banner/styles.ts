@@ -1,10 +1,5 @@
 import styled from 'styled-components'
 
-import { Props } from '.'
-
-import Sushi from '../../assets/images/bannerSushi.png'
-import Pizzaria from '../../assets/images/bannerPizza.png'
-
 export const Container = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
