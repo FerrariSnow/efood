@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import StorePage from './pages/Store'
 
-const RotasTEST = () => {
+const Rotas = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -11,4 +11,4 @@ const RotasTEST = () => {
   )
 }
 
-export default RotasTEST
+export default Rotas
