@@ -9,16 +9,18 @@ export type StoreType = {
   destacado?: boolean
   tipo: string
   avaliacao: string
-  cardapio: {
-    id: number
-    foto: string
-    preco: number
-    nome: string
-    descricao: string
-    porcao: string
-  }
+  cardapio: Array<Foods>
   descricao: string
   capa: string
+}
+
+export type Foods = {
+  id: number
+  foto: string
+  preco: number
+  nome: string
+  descricao: string
+  porcao: string
 }
 
 const Home = () => {

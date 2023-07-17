@@ -25,7 +25,7 @@ const StorePage = () => {
     <>
       <HeaderSub />
       <Banner store={stores} />
-      {/* <ProductList stores={stores.cardapio} /> */}
+      <ProductList cardapios={stores.cardapio} />
 
       <Footer />
     </>

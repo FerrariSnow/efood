@@ -1,22 +1,22 @@
 import Product from '../Product'
 import { ContainerProducts } from './styles'
-import { StoreType } from '../../pages/Home'
+import { Foods } from '../../pages/Home'
 
 export type Props = {
-  stores: StoreType[]
+  cardapios: Foods[]
 }
 
-const ProductList = ({ stores }: Props) => (
+const ProductList = ({ cardapios }: Props) => (
   <ContainerProducts className="container">
-    {stores.map((store) => (
+    {cardapios.map((store) => (
       <Product
-        descricao={store.cardapio.descricao}
-        key={store.cardapio.id}
-        foto={store.cardapio.foto}
-        id={store.cardapio.id}
-        nome={store.cardapio.nome}
-        porcao={store.cardapio.porcao}
-        preco={store.cardapio.preco}
+        descricao={store.descricao}
+        key={store.id}
+        foto={store.foto}
+        id={store.id}
+        nome={store.nome}
+        porcao={store.porcao}
+        preco={store.preco}
       />
     ))}
   </ContainerProducts>
