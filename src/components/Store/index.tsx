@@ -28,7 +28,7 @@ const Store = ({ imagem, nome, nota, descricao, tags, to }: Props) => (
     </InfosLoja>
     <DescricaoLoja>{descricao}</DescricaoLoja>
     <Button type="link" to={to} title="Saiba mais sobre a loja">
-      Saiba mais
+      <>Saiba mais</>
     </Button>
   </CardLoja>
 )

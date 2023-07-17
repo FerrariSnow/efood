@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Product from '../Product'
 
 export const ContainerProducts = styled.div`
   display: grid;

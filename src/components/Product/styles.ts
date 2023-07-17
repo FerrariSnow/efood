@@ -8,9 +8,11 @@ export const CardProduct = styled.div`
   padding: 8px;
   max-width: 320px;
   width: 100%;
+  height: auto;
 
-  ${ButtonContainer} {
-    margin-top: 8px;
+  img {
+    max-width: 320px;
+    width: 100%;
   }
 `
 
@@ -37,6 +39,10 @@ export const Modal = styled.div`
   align-items: center;
   justify-content: center;
 
+  img {
+    width: 100%;
+  }
+
   &.visible {
     display: flex;
   }
@@ -56,7 +62,6 @@ export const Modal = styled.div`
     z-index: 1;
     display: flex;
     padding: 32px;
-    justify-content: space-between;
     color: ${cores.fundo};
     background-color: ${cores.principal};
   }
@@ -64,10 +69,14 @@ export const Modal = styled.div`
 
 export const ModalContent = styled.div`
   position: relative;
+  display: flex;
 
   .modal-img {
     display: block;
     width: 100%;
+    max-width: 360px;
+    height: 100%;
+    max-height: 360px;
   }
 
   .modal-info {
@@ -93,5 +102,11 @@ export const ModalContent = styled.div`
     top: 8px;
     right: 8px;
     cursor: pointer;
+  }
+`
+
+export const Teste = styled.div`
+  ${ButtonContainer} {
+    border: 8px solid ${cores.principal};
   }
 `
