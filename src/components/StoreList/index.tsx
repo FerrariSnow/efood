@@ -1,18 +1,18 @@
 import Store from '../Store'
 import { ContainerStores } from './styles'
-import { StoreType } from '../../pages/Home'
+import { ExtendedStoreType, StoreType } from '../../pages/Home'
 
 export type Props = {
-  stores: StoreType[]
+  stores: ExtendedStoreType
 }
 
 const StoreList = ({ stores }: Props) => {
-  const formataPreco = (preco: number) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    }).format(preco)
-  }
+  // const formataPreco = (preco: number) => {
+  //   return new Intl.NumberFormat('pt-BR', {
+  //     style: 'currency',
+  //     currency: 'BRL'
+  //   }).format(preco)
+  // }
 
   const getStoreTags = (stores: StoreType) => {
     const tags = []

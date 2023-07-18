@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
 import HeaderMain from '../../components/HeaderMain'
 import Footer from '../../components/Footer'
 import StoreList from '../../components/StoreList'
+
+import { useGetStoresQuery } from '../../services/api'
 
 export type StoreType = {
   id: number
@@ -14,6 +15,13 @@ export type StoreType = {
   capa: string
 }
 
+export type ExtendedStoreType = StoreType[] & {
+  length: number
+  pop(): StoreType | undefined
+  push(...items: StoreType[]): number
+  concat(...items: ConcatArray<StoreType>[]): StoreType[]
+}
+
 export type Foods = {
   id: number
   foto: string
@@ -24,18 +32,17 @@ export type Foods = {
 }
 
 const Home = () => {
-  const [stores, setStores] = useState<StoreType[]>([])
+  const { data: stores, isLoading } = useGetStoresQuery()
 
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-      .then((res) => res.json())
-      .then((res) => setStores(res))
-  }, [])
+  if (!stores) {
+    return <h3>Carregando...</h3>
+  }
 
   return (
     <>
       <HeaderMain />
       <StoreList stores={stores} />
+      {console.log(stores)}
       <Footer />
     </>
   )
