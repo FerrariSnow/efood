@@ -1,26 +1,29 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
 import { TagContainer } from '../Tag/styles'
+import { ButtonLink } from '../Button/styles'
 
 export const CardLoja = styled.div`
   background-color: #fff;
   border: 1px solid ${cores.principal};
   color: ${cores.principal};
-  padding: 8px;
   max-width: 472px;
   width: 100%;
   position: relative;
-
-  ${TagContainer} {
-    margin-right: 8px;
-  }
+  padding-bottom: 12px;
 
   img {
     max-height: 217px;
     width: 100%;
     height: 100%;
-    // margin-left: auto;
-    // margin-right: auto;
+  }
+
+  ${TagContainer} {
+    margin-right: 8px;
+  }
+
+  ${ButtonLink} {
+    border: 8px solid #fff;
   }
 `
 
@@ -31,8 +34,7 @@ export const InfosLoja = styled.div`
   font-weight: bold;
   font-size: 16px;
   line-height: 21px;
-  margin-top: 8px;
-  margin-bottom: 16px;
+  padding: 8px;
 
   div {
     display: flex;
@@ -45,7 +47,7 @@ export const DescricaoLoja = styled.p`
   font-weight: bold;
   font-size: 14px;
   line-height: 22px;
-  margin-bottom: 16px;
+  padding: 0 8px 10px 8px;
 `
 export const TagsLoja = styled.div`
   position: absolute;
