@@ -7,12 +7,15 @@ export const CardProduct = styled.div`
   color: ${cores.secundaria};
   padding: 8px;
   max-width: 320px;
+  max-height: 340px;
   width: 100%;
   height: auto;
 
   img {
     max-width: 320px;
+    max-height: 167px;
     width: 100%;
+    height: 100%;
   }
 `
 
@@ -27,6 +30,8 @@ export const TitleProduct = styled.h3`
 export const DescriptionProduct = styled.p`
   font-size: 14px;
   line-height: 22px;
+  text-indent: 18px;
+  height: 96px;
 `
 
 export const Modal = styled.div`
@@ -102,11 +107,5 @@ export const ModalContent = styled.div`
     top: 8px;
     right: 8px;
     cursor: pointer;
-  }
-`
-
-export const Teste = styled.div`
-  ${ButtonContainer} {
-    border: 8px solid ${cores.principal};
   }
 `
