@@ -3,10 +3,11 @@ import { cores } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 
 export const CardLoja = styled.div`
-  background-color: $fff;
+  background-color: #fff;
+  border: 1px solid ${cores.principal};
   color: ${cores.principal};
   padding: 8px;
-  max-width: 480px;
+  max-width: 472px;
   width: 100%;
   position: relative;
 
@@ -15,14 +16,11 @@ export const CardLoja = styled.div`
   }
 
   img {
-    max-width: 464px;
-    max-height: 280px;
+    max-height: 217px;
     width: 100%;
-    height: auto;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    // width: 50%;
+    height: 100%;
+    // margin-left: auto;
+    // margin-right: auto;
   }
 `
 

@@ -42,7 +42,6 @@ const Home = () => {
     <>
       <HeaderMain />
       <StoreList stores={stores} />
-      {console.log(stores)}
       <Footer />
     </>
   )

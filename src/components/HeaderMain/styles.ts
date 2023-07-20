@@ -2,13 +2,13 @@ import styled from 'styled-components'
 import { cores } from '../../styles'
 
 export const HeaderContainer = styled.header`
-  padding: 40px;
-  height: 384px;
+  padding-top: 40px;
+  height: 300px;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 80px;
+  margin-bottom: 72px;
 `
 
 export const HeaderTitle = styled.h1`
