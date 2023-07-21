@@ -11,7 +11,7 @@ export const HeaderContainer = styled.header`
 `
 
 export const HeaderText = styled.p`
-  width: 109px;
+  width: auto;
   height: 21px;
   font-size: 18px;
   font-weight: bold;

@@ -9,7 +9,7 @@ export const Container = styled.div`
   display: block;
   color: #fff;
   position: relative;
-  margin-bottom: 80px;
+  margin-bottom: 56px;
 `
 
 export const TituloLoja = styled.h2`
