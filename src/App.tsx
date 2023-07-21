@@ -5,6 +5,7 @@ import { GlobalCSS } from './styles'
 
 import Rotas from './routes'
 import { storeRedux } from './store'
+import Cart from './components/Cart'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <BrowserRouter>
         <GlobalCSS />
         <Rotas />
+        <Cart />
       </BrowserRouter>
     </Provider>
   )
