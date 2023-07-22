@@ -13,7 +13,7 @@ function App() {
       <BrowserRouter>
         <GlobalCSS />
         <Rotas />
-        <Cart />
+        {/* <Cart /> */}
       </BrowserRouter>
     </Provider>
   )
