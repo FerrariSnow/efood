@@ -32,6 +32,7 @@ export const DescriptionProduct = styled.p`
   line-height: 22px;
   text-indent: 18px;
   height: 96px;
+  // margin-bottom: 16px;
 `
 
 export const Modal = styled.div`
@@ -69,6 +70,10 @@ export const Modal = styled.div`
     padding: 32px;
     color: ${cores.fundo};
     background-color: ${cores.principal};
+  }
+
+  ${ButtonContainer} {
+    margin-top: 16px;
   }
 `
 
