@@ -108,6 +108,7 @@ export const ModalContent = styled.div`
 
   ${DescriptionProduct} {
     height: auto;
+    max-height: 280px;
     margin-bottom: 16px;
   }
 
