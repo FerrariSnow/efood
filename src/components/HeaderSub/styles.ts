@@ -20,3 +20,7 @@ export const HeaderText = styled.p`
 
   color: ${cores.principal};
 `
+export const CartButton = styled.a`
+  display: flex;
+  cursor: pointer;
+`
