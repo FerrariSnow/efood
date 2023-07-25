@@ -10,6 +10,10 @@ import {
 import Close from '../../assets/images/close.svg'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+
+import { add, open } from '../../store/reducers/cart'
+import { Foods, StoreType } from '../../pages/Home'
 
 type cardapio = {
   id: number
@@ -20,22 +24,34 @@ type cardapio = {
   porcao: string
 }
 
-const Product = ({ descricao, foto, nome, porcao, preco }: cardapio) => {
+type Props = {
+  pratos: cardapio
+}
+
+export const formataPreco = (preco: number) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(preco)
+}
+
+const Product = ({ pratos }: Props) => {
   const { id } = useParams()
 
   const [modalIsOpen, setModalIsOpen] = useState(false)
-  const formataPreco = (preco: number) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    }).format(preco)
-  }
 
   const getDescricao = (description: string) => {
     if (description.length > 135) {
       return description.slice(0, 135) + '...'
     }
     return description
+  }
+
+  const dispatch = useDispatch()
+
+  const addToCart = () => {
+    dispatch(add(pratos))
+    dispatch(open())
   }
 
   return (
@@ -45,26 +61,32 @@ const Product = ({ descricao, foto, nome, porcao, preco }: cardapio) => {
           setModalIsOpen(true)
         }}
       >
-        <img src={foto} alt={nome} />
-        <TitleProduct>{nome}</TitleProduct>
-        <DescriptionProduct>{getDescricao(descricao)}</DescriptionProduct>
-        <Button type="button" title="Adicionar produto ao carrinho">
-          <>Adicionar ao carrinho - {formataPreco(preco)}</>
+        <img src={pratos.foto} alt={pratos.nome} />
+        <TitleProduct>{pratos.nome}</TitleProduct>
+        <DescriptionProduct>
+          {getDescricao(pratos.descricao)}
+        </DescriptionProduct>
+        <Button type="button" title="Clique para ver mais detalhes do produto">
+          <>Mais detalhes</>
         </Button>
       </CardProduct>
       <Modal className={modalIsOpen ? 'visible' : ''}>
         <ModalContent className="container">
           <div className="modal-img">
-            <img src={foto} alt="Imagem do produto" />
+            <img src={pratos.foto} alt="Imagem do produto" />
           </div>
           <div className="modal-info">
-            <TitleProduct>{nome}</TitleProduct>
+            <TitleProduct>{pratos.nome}</TitleProduct>
             <DescriptionProduct>
-              {descricao} <br />
+              {pratos.descricao} <br />
             </DescriptionProduct>
-            <div>Serve: {porcao}</div>
-            <Button type="button" title="Adicionar produto ao carrinho">
-              <>Adicionar ao carrinho - {formataPreco(preco)}</>
+            <div>Serve: {pratos.porcao}</div>
+            <Button
+              type="button"
+              title="Adicionar produto ao carrinho"
+              onClick={addToCart}
+            >
+              <>Adicionar ao carrinho - {formataPreco(pratos.preco)}</>
             </Button>
           </div>
           <div className="close">

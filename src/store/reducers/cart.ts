@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { StoreType } from '../../pages/Home'
+import { Foods, StoreType } from '../../pages/Home'
 
 type CartState = {
-  items: StoreType[]
+  items: Foods[]
   isOpen: boolean
 }
 
@@ -15,8 +15,17 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    add: (state, action: PayloadAction<StoreType>) => {
-      state.items.push(action.payload)
+    add: (state, action: PayloadAction<Foods>) => {
+      const food = state.items.find((item) => item.id === action.payload.id)
+
+      if (!food) {
+        state.items.push(action.payload)
+      } else {
+        alert('O produto já foi adicionado ao carrinho')
+      }
+    },
+    remove: (state, action: PayloadAction<number>) => {
+      state.items = state.items.filter((item) => item.id !== action.payload)
     },
     open: (state) => {
       state.isOpen = true
@@ -27,6 +36,6 @@ const cartSlice = createSlice({
   }
 })
 
-export const { add, open, close } = cartSlice.actions
+export const { add, remove, open, close } = cartSlice.actions
 
 export default cartSlice.reducer

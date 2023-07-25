@@ -10,13 +10,14 @@ const ProductList = ({ cardapios }: Props) => (
   <ContainerProducts className="container">
     {cardapios.map((store) => (
       <Product
-        descricao={store.descricao}
+        pratos={store}
+        // descricao={store.descricao}
         key={store.id}
-        foto={store.foto}
-        id={store.id}
-        nome={store.nome}
-        porcao={store.porcao}
-        preco={store.preco}
+        // foto={store.foto}
+        // id={store.id}
+        // nome={store.nome}
+        // porcao={store.porcao}
+        // preco={store.preco}
       />
     ))}
   </ContainerProducts>
