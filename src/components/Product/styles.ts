@@ -32,7 +32,6 @@ export const DescriptionProduct = styled.p`
   line-height: 22px;
   text-indent: 18px;
   height: 96px;
-  // margin-bottom: 16px;
 `
 
 export const Modal = styled.div`
@@ -80,17 +79,27 @@ export const Modal = styled.div`
 export const ModalContent = styled.div`
   position: relative;
   display: flex;
+  align-items: center;
+  max-height: 344px;
+  height: 100%;
 
   .modal-img {
     display: block;
+    max-width: 280px;
+    max-height: 280px;
     width: 100%;
-    max-width: 360px;
     height: 100%;
-    max-height: 360px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 
   .modal-info {
     margin-left: 24px;
+    height: 100%;
   }
 
   ${TitleProduct} {
@@ -98,13 +107,19 @@ export const ModalContent = styled.div`
   }
 
   ${DescriptionProduct} {
+    height: auto;
     margin-bottom: 16px;
+  }
+
+  div {
+    font-size: 14px;
   }
 
   ${ButtonContainer} {
     width: auto;
     padding: 8px;
     cursor: pointer;
+    margin-top: 16px;
   }
 
   .close {

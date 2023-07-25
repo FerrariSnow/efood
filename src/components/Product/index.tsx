@@ -60,11 +60,9 @@ const Product = ({ descricao, foto, nome, porcao, preco }: cardapio) => {
           <div className="modal-info">
             <TitleProduct>{nome}</TitleProduct>
             <DescriptionProduct>
-              {descricao}
-              <br />
-              <br />
-              Serve: {porcao}
+              {descricao} <br />
             </DescriptionProduct>
+            <div>Serve: {porcao}</div>
             <Button type="button" title="Adicionar produto ao carrinho">
               <>Adicionar ao carrinho - {formataPreco(preco)}</>
             </Button>
