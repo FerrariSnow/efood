@@ -35,17 +35,17 @@ export const formataPreco = (preco: number) => {
   }).format(preco)
 }
 
+export const getDescricao = (description: string) => {
+  if (description.length > 135) {
+    return description.slice(0, 135) + '...'
+  }
+  return description
+}
+
 const Product = ({ pratos }: Props) => {
   const { id } = useParams()
 
   const [modalIsOpen, setModalIsOpen] = useState(false)
-
-  const getDescricao = (description: string) => {
-    if (description.length > 135) {
-      return description.slice(0, 135) + '...'
-    }
-    return description
-  }
 
   const dispatch = useDispatch()
 

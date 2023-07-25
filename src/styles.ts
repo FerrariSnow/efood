@@ -6,6 +6,12 @@ export const cores = {
   fundo: '#FFF8F1'
 }
 
+export const breakpoints = {
+  desktop: '1024px',
+  tablet: '768px',
+  celular: '425px'
+}
+
 export const GlobalCSS = createGlobalStyle`
   * {
     margin: 0;
@@ -24,4 +30,6 @@ export const GlobalCSS = createGlobalStyle`
     width: 100%;
     margin: 0 auto;
   }
+
+
 `
