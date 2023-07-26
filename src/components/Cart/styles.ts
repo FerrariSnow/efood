@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 import trash from '../../assets/images/trash.svg'
 
@@ -32,6 +32,10 @@ export const Sidebar = styled.aside`
   max-width: 360px;
   width: 100%;
   z-index: 1;
+
+  @media (max-width: ${breakpoints.celular}) {
+    max-width: 70%;
+  }
 `
 
 export const CartItem = styled.li`
@@ -46,6 +50,10 @@ export const CartItem = styled.li`
   h3 {
     font-weight: 900;
     font-size: 18px;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      font-size: 12px;
+    }
   }
 
   p {
@@ -53,11 +61,17 @@ export const CartItem = styled.li`
     font-size: 14px;
     line-height: 22px;
     margin-top: 16px;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      font-size: 12px;
+    }
   }
 
   img {
-    height: 80px;
-    width: 80px;
+    max-height: 80px;
+    max-width: 80px;
+    height: 100%;
+    width: 100%;
     object-fit: cover;
     margin-right: 8px;
   }

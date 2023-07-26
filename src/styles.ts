@@ -29,6 +29,10 @@ export const GlobalCSS = createGlobalStyle`
     max-width: 1024px;
     width: 100%;
     margin: 0 auto;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      width: 80%;
+    }
   }
 
 

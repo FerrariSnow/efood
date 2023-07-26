@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 import { ButtonContainer } from '../Button/styles'
 
 export const CardProduct = styled.div`
@@ -30,8 +30,11 @@ export const TitleProduct = styled.h3`
 export const DescriptionProduct = styled.p`
   font-size: 14px;
   line-height: 22px;
-  text-indent: 18px;
   height: 96px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    height: 66px;
+  }
 `
 
 export const Modal = styled.div`

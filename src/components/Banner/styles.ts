@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { breakpoints } from '../../styles'
 
 export const Container = styled.div`
   background-repeat: no-repeat;
@@ -10,15 +11,25 @@ export const Container = styled.div`
   color: #fff;
   position: relative;
   margin-bottom: 56px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 100%;
+  }
 `
 
 export const TituloLoja = styled.h2`
   position: absolute;
+  display: block;
   bottom: 32px;
-  width: 676px;
+  width: auto;
   height: 33.25px;
   font-size: 32px;
   line-height: 38px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 24px;
+    line-height: 36px;
+  }
 `
 export const TipoLoja = styled.p`
   position: absolute;
