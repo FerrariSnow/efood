@@ -101,8 +101,14 @@ export const ModalContent = styled.div`
   @media (max-width: ${breakpoints.tablet}) {
     display: flex;
     flex-direction: column;
-    max-height: 500px;
+    max-height: 550px;
+    padding: 16px;
     height: 100%;
+    justify-content: center;
+
+    button {
+      margin-bottom: 16px;
+    }
   }
 
   .modal-img {
@@ -125,6 +131,13 @@ export const ModalContent = styled.div`
 
     @media (max-width: ${breakpoints.tablet}) {
       width: 100%;
+      height: 50%;
+    }
+
+    @media (max-width: ${breakpoints.celular}) {
+      width: 100%;
+      height: 60%;
+      margin: 0 auto;
     }
   }
 
