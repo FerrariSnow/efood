@@ -30,7 +30,7 @@ export const GlobalCSS = createGlobalStyle`
     width: 100%;
     margin: 0 auto;
 
-    @media (max-width: ${breakpoints.tablet}) {
+    @media (max-width: ${breakpoints.desktop}) {
       width: 80%;
     }
   }

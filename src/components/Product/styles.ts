@@ -34,6 +34,8 @@ export const DescriptionProduct = styled.p`
 
   @media (max-width: ${breakpoints.desktop}) {
     height: 66px;
+    font-size: 12px;
+    line-height: 20px;
   }
 `
 
@@ -72,6 +74,10 @@ export const Modal = styled.div`
     padding: 32px;
     color: ${cores.fundo};
     background-color: ${cores.principal};
+
+    @media (max-width: ${breakpoints.desktop}) {
+      max-width: 80%;
+    }
   }
 
   ${ButtonContainer} {
@@ -85,6 +91,19 @@ export const ModalContent = styled.div`
   align-items: center;
   max-height: 344px;
   height: 100%;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    .modal-info {
+      width: 50%;
+    }
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    height: 100%;
+  }
 
   .modal-img {
     display: block;
@@ -103,6 +122,10 @@ export const ModalContent = styled.div`
   .modal-info {
     margin-left: 24px;
     height: 100%;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      width: 100%;
+    }
   }
 
   ${TitleProduct} {

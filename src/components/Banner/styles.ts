@@ -13,7 +13,7 @@ export const Container = styled.div`
   margin-bottom: 56px;
 
   @media (max-width: ${breakpoints.tablet}) {
-    width: 100%;
+    max-width: 100%;
   }
 `
 
@@ -28,7 +28,7 @@ export const TituloLoja = styled.h2`
 
   @media (max-width: ${breakpoints.tablet}) {
     font-size: 24px;
-    line-height: 36px;
+    line-height: 32px;
   }
 `
 export const TipoLoja = styled.p`
