@@ -1,6 +1,7 @@
 import Store from '../Store'
 import { ContainerStores } from './styles'
 import { ExtendedStoreType, StoreType } from '../../pages/Home'
+import { getDescricao } from '../Product'
 
 export type Props = {
   stores: ExtendedStoreType
@@ -35,7 +36,7 @@ const StoreList = ({ stores }: Props) => {
           imagem={stores.capa}
           nome={stores.titulo}
           nota={stores.avaliacao}
-          descricao={stores.descricao}
+          descricao={getDescricao(stores.descricao)}
           tags={getStoreTags(stores)}
           to={`/store/${stores.id}`}
         />

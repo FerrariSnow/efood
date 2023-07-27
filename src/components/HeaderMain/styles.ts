@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const HeaderContainer = styled.header`
   padding-top: 40px;
@@ -13,11 +13,17 @@ export const HeaderContainer = styled.header`
 
 export const HeaderTitle = styled.h1`
   position: absolute;
-  width: 539px;
+  top: 40px;
+  max-width: 80%;
   height: 84px;
   font-size: 36px;
   line-height: 42px;
   text-align: center;
   color: ${cores.principal};
   padding-top: 144px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 24px;
+    line-height: 36px;
+  }
 `

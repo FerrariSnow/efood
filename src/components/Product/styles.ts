@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 import { ButtonContainer } from '../Button/styles'
 
 export const CardProduct = styled.div`
@@ -30,8 +30,13 @@ export const TitleProduct = styled.h3`
 export const DescriptionProduct = styled.p`
   font-size: 14px;
   line-height: 22px;
-  text-indent: 18px;
   height: 96px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    height: 66px;
+    font-size: 12px;
+    line-height: 20px;
+  }
 `
 
 export const Modal = styled.div`
@@ -69,6 +74,10 @@ export const Modal = styled.div`
     padding: 32px;
     color: ${cores.fundo};
     background-color: ${cores.principal};
+
+    @media (max-width: ${breakpoints.desktop}) {
+      max-width: 80%;
+    }
   }
 
   ${ButtonContainer} {
@@ -82,6 +91,25 @@ export const ModalContent = styled.div`
   align-items: center;
   max-height: 344px;
   height: 100%;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    .modal-info {
+      width: 50%;
+    }
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: flex;
+    flex-direction: column;
+    max-height: 550px;
+    padding: 16px;
+    height: 100%;
+    justify-content: center;
+
+    button {
+      margin-bottom: 16px;
+    }
+  }
 
   .modal-img {
     display: block;
@@ -100,6 +128,17 @@ export const ModalContent = styled.div`
   .modal-info {
     margin-left: 24px;
     height: 100%;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      width: 100%;
+      height: 50%;
+    }
+
+    @media (max-width: ${breakpoints.celular}) {
+      width: 100%;
+      height: 60%;
+      margin: 0 auto;
+    }
   }
 
   ${TitleProduct} {
@@ -108,6 +147,7 @@ export const ModalContent = styled.div`
 
   ${DescriptionProduct} {
     height: auto;
+    max-height: 280px;
     margin-bottom: 16px;
   }
 

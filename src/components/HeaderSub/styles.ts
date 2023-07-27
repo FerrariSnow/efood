@@ -8,6 +8,10 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+
+  @media (max-width: 550px) {
+    flex-direction: column;
+  }
 `
 
 export const HeaderText = styled.p`
@@ -19,4 +23,13 @@ export const HeaderText = styled.p`
   text-align: center;
 
   color: ${cores.principal};
+
+  @media (max-width: 550px) {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+`
+export const CartButton = styled.a`
+  display: flex;
+  cursor: pointer;
 `
