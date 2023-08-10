@@ -119,8 +119,21 @@ export const Sidebar = styled.aside`
       }
     }
 
-  &.confirmação {
+  &.confirmText {
     color: ${cores.fundo};
+
+    h3 {
+      font-size: 16px;
+      line-height: 18px;
+      margin-bottom: 16px;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 22px;
+      font-weight: 400;
+      margin-bottom: 30px;
+    }
   }
 `
 
