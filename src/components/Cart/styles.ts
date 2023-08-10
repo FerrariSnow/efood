@@ -88,61 +88,36 @@ export const Sidebar = styled.aside`
           width: 100%;
         }
 
-
-
             @media (max-width: ${breakpoints.celular}) {
-              display: block;
+              width: 100%;
             }
+          }
+
+        }
+
+        .twoInputCenter {
+          display: flex;
+          justify-content: space-between;
+
+          >div {
+            max-width: 150px;
+            width: 100%;
+            display: inline-block;
+          }
+
+          @media (max-width: ${breakpoints.celular}) {
+            display: block;
           }
 
       }
+      .buttons {
+        margin-top: 24px;
 
-      .twoInputCenter {
-        display: flex;
-        justify-content: space-between;
-
-        >div {
-          max-width: 150px;
-          width: 100%;
-          display: inline-block;
-
-
-            label {
-              font-size: 14px;
-              line-height: 16px;
-              font-weight: 700;
-              color: ${cores.secundaria};
-              margin-top: 8px;
-            }
-
-            input {
-              background-color: ${cores.secundaria};
-              height: 32px;
-              width: 100%;
-              padding: 0 8px;
-              border: 1px; solid ${cores.secundaria}
-              font-size: 14px;
-            }
-
-            @media (max-width: ${breakpoints.celular}) {
-              display: block;
-            }
-          }
-        }
-
-        .buttons {
-          margin-top: 24px;
-
-          ${ButtonContainer} {
-            margin-bottom: 8px;
-          }
+        ${ButtonContainer} {
+          margin-bottom: 8px;
         }
       }
     }
-
-      &.paymentInfos {
-
-  }
 
   &.confirmação {
     color: ${cores.fundo};

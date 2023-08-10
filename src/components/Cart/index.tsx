@@ -181,7 +181,8 @@ const Cart = () => {
                 ) : (
                   <>
                     <Overlay />
-                    <Sidebar className="confirmação">
+                    {/* AGRADECIMENTO */}
+                    <Sidebar className="confirmText">
                       <h3>Pedido realizado - 1213123</h3>
 
                       <p>
