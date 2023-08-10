@@ -39,7 +39,7 @@ export const Sidebar = styled.aside`
     max-width: 70%;
   }
 
-  &.deliveryInfos {
+  &.deliveryInfos, &.paymentInfos {
     display: flex;
 
     .form {
@@ -68,10 +68,36 @@ export const Sidebar = styled.aside`
         font-size: 16px;
         line-height: 18px;
         color: ${cores.secundaria};
-        margin-bottom: 8px;
+        margin-bottom: 16px;
       }
 
-      .cep {
+      .twoInputs {
+        display: flex;
+        width: auto;
+
+        .teste1 {
+          width: 70%;
+        }
+
+        .cvv {
+          width: 30%;
+          margin-left: 30px;
+        }
+
+        input {
+          width: 100%;
+        }
+
+
+
+            @media (max-width: ${breakpoints.celular}) {
+              display: block;
+            }
+          }
+
+      }
+
+      .twoInputCenter {
         display: flex;
         justify-content: space-between;
 
@@ -111,6 +137,10 @@ export const Sidebar = styled.aside`
             margin-bottom: 8px;
           }
         }
+      }
+    }
+
+      &.paymentInfos {
 
   }
 

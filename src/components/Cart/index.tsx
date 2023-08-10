@@ -89,7 +89,7 @@ const Cart = () => {
                       <label htmlFor="city">Cidade</label>
                       <input id="city" type="text" />
                     </div>
-                    <div className="cep">
+                    <div className="twoInputCenter">
                       <div>
                         <label htmlFor="cep">CEP</label>
                         <input id="cep" type="number" />
@@ -124,25 +124,58 @@ const Cart = () => {
               </>
             ) : (
               <>
-                {!paymentInfo ? (
+                {!paymentInfo ? ( // PAGAMENTO
                   <>
                     <Overlay />
-                    <Sidebar>
-                      dados do pagamento
-                      <Button
-                        title="Clique aqui para continuar com a entrega"
-                        type="button"
-                        onClick={() => setPaymentInfo(true)}
-                      >
-                        <>Finalizar pagamento</>
-                      </Button>
-                      <Button
-                        title="Clique aqui para continuar com a entrega"
-                        type="button"
-                        onClick={() => setDeliveryInfo(false)}
-                      >
-                        <>Voltar para edição de endereço</>
-                      </Button>
+                    <Sidebar className="paymentInfos">
+                      <div className="form">
+                        <h3>Pagamento - Valor a pagar R$ 180,18</h3>
+                        <div>
+                          <label htmlFor="cardName">Nome no cartão</label>
+                          <input id="cardName" type="text" />
+                        </div>
+                        <div className="twoInputs">
+                          <div className="teste1">
+                            <label htmlFor="cardNumber">Número do cartão</label>
+                            <input id="cardNumber" type="text" />
+                          </div>
+                          <div className="cvv">
+                            <label htmlFor="cvv">CVV</label>
+                            <input id="cvv" type="number" />
+                          </div>
+                        </div>
+                        <div className="twoInputCenter">
+                          <div>
+                            <label htmlFor="expiresMonth">
+                              Mês de vencimento
+                            </label>
+                            <input id="expiresMonth" type="number" />
+                          </div>
+                          <div>
+                            <label htmlFor="expiresYear">
+                              Ano de vencimento
+                            </label>
+                            <input id="expiresYear" type="number" />
+                          </div>
+                        </div>
+
+                        <div className="buttons">
+                          <Button
+                            title="Clique aqui para finalizar o pagamento"
+                            type="button"
+                            onClick={() => setPaymentInfo(true)}
+                          >
+                            <>Finalizar pagamento</>
+                          </Button>
+                          <Button
+                            title="Clique aqui para voltar e editar dados da entrega"
+                            type="button"
+                            onClick={() => setDeliveryInfo(false)}
+                          >
+                            <>Voltar para edição de endereço</>
+                          </Button>
+                        </div>
+                      </div>
                     </Sidebar>
                   </>
                 ) : (
