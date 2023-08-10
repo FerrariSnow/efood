@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import { breakpoints, cores } from '../../styles'
 
 import trash from '../../assets/images/trash.svg'
+import Button from '../Button'
+import { ButtonContainer } from '../Button/styles'
 
 export const Overlay = styled.div`
   position: absolute;
@@ -35,6 +37,85 @@ export const Sidebar = styled.aside`
 
   @media (max-width: ${breakpoints.celular}) {
     max-width: 70%;
+  }
+
+  &.deliveryInfos {
+    display: flex;
+
+    .form {
+      margin: 0 auto;
+
+        label {
+        font-size: 14px;
+        line-height: 16px;
+        font-weight: 700;
+        color: ${cores.secundaria};
+        margin-top: 8px;
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      input {
+        background-color: ${cores.secundaria};
+        height: 32px;
+        width: 100%;
+        padding: 0 8px;
+        border: 1px; solid ${cores.secundaria}
+        font-size: 14px;
+      }
+
+      h3 {
+        font-size: 16px;
+        line-height: 18px;
+        color: ${cores.secundaria};
+        margin-bottom: 8px;
+      }
+
+      .cep {
+        display: flex;
+        justify-content: space-between;
+
+        >div {
+          max-width: 150px;
+          width: 100%;
+          display: inline-block;
+
+
+            label {
+              font-size: 14px;
+              line-height: 16px;
+              font-weight: 700;
+              color: ${cores.secundaria};
+              margin-top: 8px;
+            }
+
+            input {
+              background-color: ${cores.secundaria};
+              height: 32px;
+              width: 100%;
+              padding: 0 8px;
+              border: 1px; solid ${cores.secundaria}
+              font-size: 14px;
+            }
+
+            @media (max-width: ${breakpoints.celular}) {
+              display: block;
+            }
+          }
+        }
+
+        .buttons {
+          margin-top: 24px;
+
+          ${ButtonContainer} {
+            margin-bottom: 8px;
+          }
+        }
+
+  }
+
+  &.confirmação {
+    color: ${cores.fundo};
   }
 `
 
