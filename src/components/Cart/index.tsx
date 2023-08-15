@@ -8,6 +8,8 @@ import { close, remove } from '../../store/reducers/cart'
 
 import { formataPreco } from '../Product'
 import { useState } from 'react'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
@@ -15,10 +17,90 @@ const Cart = () => {
   const [deliveryInfo, setDeliveryInfo] = useState(false)
   const [paymentInfo, setPaymentInfo] = useState(false)
 
-  // const checkDeliveryInfo = () => {
+  const form = useFormik({
+    initialValues: {
+      name: '',
+      address: '',
+      city: '',
+      cep: '',
+      numberHouse: '',
+      optional: '',
+      cardName: '',
+      cardNumber: '',
+      cvv: '',
+      expiresMonth: '',
+      expiresYear: ''
+    },
+    validationSchema: Yup.object({
+      name: Yup.string()
+        .min(5, 'O nome precisa ter pelo menos 5 caracteres')
+        .required('O campo é obrigatório'),
+      address: Yup.string().required('O campo é obrigatório'),
+      city: Yup.string().required('O campo é obrigatório'),
+      cep: Yup.string()
+        .min(9, 'O CEP está incorreto')
+        .max(9, 'O CEP está incorreto')
+        .required('O campo é obrigatório'),
+      numberHouse: Yup.string().required('O campo é obrigatório'),
 
-  // return setDeliveryInfo(true)
-  // }
+      cardName: Yup.string().when((values, schema) =>
+        deliveryInfo ? schema.required('O campo é obrigatório') : schema
+      ),
+      cardNumber: Yup.string().when((values, schema) =>
+        deliveryInfo ? schema.required('O campo é obrigatório') : schema
+      ),
+      cvv: Yup.string().when((values, schema) =>
+        deliveryInfo ? schema.required('O campo é obrigatório') : schema
+      ),
+      expiresMonth: Yup.string().when((values, schema) =>
+        deliveryInfo ? schema.required('O campo é obrigatório') : schema
+      ),
+      expiresYear: Yup.string().when((values, schema) =>
+        deliveryInfo ? schema.required('O campo é obrigatório') : schema
+      )
+    }),
+    onSubmit: (values) => {
+      console.log(values)
+    }
+  })
+
+  const checkInputHasError = (fieldName: string) => {
+    const isTouched = fieldName in form.touched
+    const isInvalid = fieldName in form.errors
+    const hasError = isTouched && isInvalid
+
+    return hasError
+  }
+
+  // console.log(form)
+
+  const checkDeliveryInfo = () => {
+    if (
+      !form.values.name ||
+      !form.values.address ||
+      !form.values.city ||
+      !form.values.cep ||
+      !form.values.numberHouse
+    ) {
+      return setDeliveryInfo(false)
+    } else {
+      return setDeliveryInfo(true)
+    }
+  }
+
+  const checkPaymentInfo = () => {
+    if (
+      !form.values.cardName ||
+      !form.values.cardNumber ||
+      !form.values.cvv ||
+      !form.values.expiresMonth ||
+      !form.values.expiresYear
+    ) {
+      return setPaymentInfo(false)
+    } else {
+      return setPaymentInfo(true)
+    }
+  }
 
   const dispatch = useDispatch()
 
@@ -75,51 +157,100 @@ const Cart = () => {
               <>
                 <Overlay />
                 <Sidebar className="deliveryInfos">
-                  <div className="form">
+                  <form onSubmit={form.handleSubmit} className="form">
                     <h3>Entrega</h3>
                     <div>
                       <label htmlFor="name">Quem irá receber</label>
-                      <input id="name" type="text" />
+                      <input
+                        id="name"
+                        type="text"
+                        name="name"
+                        value={form.values.name}
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+                        className={checkInputHasError('name') ? 'error' : ''}
+                      />
                     </div>
                     <div>
                       <label htmlFor="address">Endereço</label>
-                      <input id="address" type="text" />
+                      <input
+                        id="address"
+                        type="text"
+                        name="address"
+                        value={form.values.address}
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+                        className={checkInputHasError('address') ? 'error' : ''}
+                      />
                     </div>
                     <div>
                       <label htmlFor="city">Cidade</label>
-                      <input id="city" type="text" />
+                      <input
+                        id="city"
+                        type="text"
+                        name="city"
+                        value={form.values.city}
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+                        className={checkInputHasError('city') ? 'error' : ''}
+                      />
                     </div>
                     <div className="twoInputCenter">
                       <div>
                         <label htmlFor="cep">CEP</label>
-                        <input id="cep" type="number" />
+                        <input
+                          id="cep"
+                          type="number"
+                          name="cep"
+                          value={form.values.cep}
+                          onChange={form.handleChange}
+                          onBlur={form.handleBlur}
+                          className={checkInputHasError('cep') ? 'error' : ''}
+                        />
                       </div>
                       <div>
-                        <label htmlFor="number">Número</label>
-                        <input id="number" type="number" />
+                        <label htmlFor="numberHouse">Número</label>
+                        <input
+                          id="numberHouse"
+                          type="number"
+                          name="numberHouse"
+                          value={form.values.numberHouse}
+                          onChange={form.handleChange}
+                          onBlur={form.handleBlur}
+                          className={
+                            checkInputHasError('numberHouse') ? 'error' : ''
+                          }
+                        />
                       </div>
                     </div>
                     <div>
-                      <label htmlFor="optional">Complemente(opcional)</label>
-                      <input id="optional" type="text" />
+                      <label htmlFor="optional">Complemento(opcional)</label>
+                      <input
+                        id="optional"
+                        type="text"
+                        name="optional"
+                        value={form.values.optional}
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+                      />
                     </div>
                     <div className="buttons">
                       <Button
                         title="Clique aqui para continuar com a entrega"
-                        type="button"
-                        onClick={() => setDeliveryInfo(true)}
+                        type="submit"
+                        onClick={() => checkDeliveryInfo()}
                       >
                         <>Continuar com o pagamento</>
                       </Button>
                       <Button
-                        title="Clique aqui para continuar com a entrega"
+                        title="Clique aqui para voltar para o carrinho"
                         type="button"
                         onClick={() => setCarrinhoAtivo(true)}
                       >
                         <>Voltar para o carrinho</>
                       </Button>
                     </div>
-                  </div>
+                  </form>
                 </Sidebar>
               </>
             ) : (
@@ -128,20 +259,50 @@ const Cart = () => {
                   <>
                     <Overlay />
                     <Sidebar className="paymentInfos">
-                      <div className="form">
+                      <form onSubmit={form.handleSubmit} className="form">
                         <h3>Pagamento - Valor a pagar R$ 180,18</h3>
                         <div>
                           <label htmlFor="cardName">Nome no cartão</label>
-                          <input id="cardName" type="text" />
+                          <input
+                            id="cardName"
+                            type="text"
+                            name="cardName"
+                            value={form.values.cardName}
+                            onChange={form.handleChange}
+                            onBlur={form.handleBlur}
+                            className={
+                              checkInputHasError('cardName') ? 'error' : ''
+                            }
+                          />
                         </div>
                         <div className="twoInputs">
-                          <div className="teste1">
+                          <div className="cardNumberClass">
                             <label htmlFor="cardNumber">Número do cartão</label>
-                            <input id="cardNumber" type="text" />
+                            <input
+                              id="cardNumber"
+                              type="text"
+                              name="cardNumber"
+                              value={form.values.cardNumber}
+                              onChange={form.handleChange}
+                              onBlur={form.handleBlur}
+                              className={
+                                checkInputHasError('cardNumber') ? 'error' : ''
+                              }
+                            />
                           </div>
                           <div className="cvv">
                             <label htmlFor="cvv">CVV</label>
-                            <input id="cvv" type="number" />
+                            <input
+                              id="cvv"
+                              type="number"
+                              name="cvv"
+                              value={form.values.cvv}
+                              onChange={form.handleChange}
+                              onBlur={form.handleBlur}
+                              className={
+                                checkInputHasError('cvv') ? 'error' : ''
+                              }
+                            />
                           </div>
                         </div>
                         <div className="twoInputCenter">
@@ -149,21 +310,43 @@ const Cart = () => {
                             <label htmlFor="expiresMonth">
                               Mês de vencimento
                             </label>
-                            <input id="expiresMonth" type="number" />
+                            <input
+                              id="expiresMonth"
+                              type="number"
+                              name="expiresMonth"
+                              value={form.values.expiresMonth}
+                              onChange={form.handleChange}
+                              onBlur={form.handleBlur}
+                              className={
+                                checkInputHasError('expiresMonth')
+                                  ? 'error'
+                                  : ''
+                              }
+                            />
                           </div>
                           <div>
                             <label htmlFor="expiresYear">
                               Ano de vencimento
                             </label>
-                            <input id="expiresYear" type="number" />
+                            <input
+                              id="expiresYear"
+                              type="number"
+                              name="expiresYear"
+                              value={form.values.expiresYear}
+                              onChange={form.handleChange}
+                              onBlur={form.handleBlur}
+                              className={
+                                checkInputHasError('expiresYear') ? 'error' : ''
+                              }
+                            />
                           </div>
                         </div>
 
                         <div className="buttons">
                           <Button
                             title="Clique aqui para finalizar o pagamento"
-                            type="button"
-                            onClick={() => setPaymentInfo(true)}
+                            type="submit"
+                            onClick={() => checkPaymentInfo()}
                           >
                             <>Finalizar pagamento</>
                           </Button>
@@ -175,7 +358,7 @@ const Cart = () => {
                             <>Voltar para edição de endereço</>
                           </Button>
                         </div>
-                      </div>
+                      </form>
                     </Sidebar>
                   </>
                 ) : (

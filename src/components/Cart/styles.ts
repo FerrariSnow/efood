@@ -60,8 +60,12 @@ export const Sidebar = styled.aside`
         height: 32px;
         width: 100%;
         padding: 0 8px;
-        border: 1px; solid ${cores.secundaria}
+        border: 2px; solid ${cores.secundaria}
         font-size: 14px;
+
+        &.error {
+          border: 2px solid red;
+        }
       }
 
       h3 {
@@ -75,7 +79,7 @@ export const Sidebar = styled.aside`
         display: flex;
         width: auto;
 
-        .teste1 {
+        .cardNumberClass {
           width: 70%;
         }
 
@@ -86,6 +90,10 @@ export const Sidebar = styled.aside`
 
         input {
           width: 100%;
+
+          &.error {
+            border: 2px solid red;
+          }
         }
 
             @media (max-width: ${breakpoints.celular}) {
