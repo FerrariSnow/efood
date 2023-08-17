@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom'
-import { StoreType } from '../Home'
 import HeaderSub from '../../components/HeaderSub'
 import { Banner } from '../../components/Banner'
 import ProductList from '../../components/ProductList'

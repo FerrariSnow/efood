@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 const HeaderMain = () => (
   <HeaderContainer style={{ backgroundImage: `url(${CabecalhoImg})` }}>
-    <Link to="/">
+    <Link title="Logo da loja" to="/">
       <img src={Logo} alt="Logo da eFood" />
     </Link>
     <HeaderTitle>

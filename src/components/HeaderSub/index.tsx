@@ -20,7 +20,7 @@ const HeaderSub = () => {
     <>
       <HeaderContainer style={{ backgroundImage: `url(${CabecalhoImg})` }}>
         <HeaderText>Restaurantes</HeaderText>
-        <Link to="/">
+        <Link title="Clique aqui para ir para a página inicial" to="/">
           <img src={Logo} alt="Logo da eFood" />
         </Link>
         <HeaderText>

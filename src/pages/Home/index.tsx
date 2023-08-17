@@ -32,7 +32,7 @@ export type Foods = {
 }
 
 const Home = () => {
-  const { data: stores, isLoading } = useGetStoresQuery()
+  const { data: stores } = useGetStoresQuery()
 
   if (!stores) {
     return <h3>Carregando...</h3>

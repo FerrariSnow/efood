@@ -10,6 +10,7 @@ export const CardProduct = styled.div`
   max-height: 340px;
   width: 100%;
   height: auto;
+  cursor: pointer;
 
   img {
     max-width: 320px;

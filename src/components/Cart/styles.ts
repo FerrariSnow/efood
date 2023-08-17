@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import { breakpoints, cores } from '../../styles'
 
 import trash from '../../assets/images/trash.svg'
-import Button from '../Button'
 import { ButtonContainer } from '../Button/styles'
 
 export const Overlay = styled.div`

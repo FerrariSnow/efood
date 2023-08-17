@@ -9,11 +9,9 @@ import {
 
 import Close from '../../assets/images/close.svg'
 import { useState } from 'react'
-import { useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
 import { add, open } from '../../store/reducers/cart'
-import { Foods, StoreType } from '../../pages/Home'
 
 type cardapio = {
   id: number
@@ -43,7 +41,7 @@ export const getDescricao = (description: string) => {
 }
 
 const Product = ({ pratos }: Props) => {
-  const { id } = useParams()
+  // const { id } = useParams()
 
   const [modalIsOpen, setModalIsOpen] = useState(false)
 

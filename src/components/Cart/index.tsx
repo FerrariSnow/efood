@@ -18,7 +18,7 @@ const Cart = () => {
   const [deliveryInfo, setDeliveryInfo] = useState(false)
   const [paymentInfo, setPaymentInfo] = useState(false)
 
-  const [purchase, { isLoading, isError, data }] = usePurchaseMutation()
+  const [purchase] = usePurchaseMutation()
 
   const form = useFormik({
     initialValues: {
