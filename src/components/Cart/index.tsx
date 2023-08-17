@@ -10,12 +10,15 @@ import { formataPreco } from '../Product'
 import { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import { usePurchaseMutation } from '../../services/api'
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
   const [carrinhoAtivo, setCarrinhoAtivo] = useState(true)
   const [deliveryInfo, setDeliveryInfo] = useState(false)
   const [paymentInfo, setPaymentInfo] = useState(false)
+
+  const [purchase, { isLoading, isError, data }] = usePurchaseMutation()
 
   const form = useFormik({
     initialValues: {
@@ -60,7 +63,30 @@ const Cart = () => {
       )
     }),
     onSubmit: (values) => {
-      console.log(values)
+      purchase({
+        delivery: {
+          receiver: values.name,
+          address: {
+            description: values.address,
+            city: values.city,
+            zipCode: values.cep,
+            number: Number(values.numberHouse),
+            complement: values.optional
+          }
+        },
+        payment: {
+          card: {
+            name: values.cardName,
+            cardNumber: values.cardNumber,
+            code: Number(values.cvv),
+            expires: {
+              month: Number(values.expiresMonth),
+              year: Number(values.expiresYear)
+            }
+          }
+        },
+        products: [{ id: 18, price: 18 }]
+      })
     }
   })
 
@@ -200,7 +226,7 @@ const Cart = () => {
                         <label htmlFor="cep">CEP</label>
                         <input
                           id="cep"
-                          type="number"
+                          type="text"
                           name="cep"
                           value={form.values.cep}
                           onChange={form.handleChange}
@@ -212,7 +238,7 @@ const Cart = () => {
                         <label htmlFor="numberHouse">Número</label>
                         <input
                           id="numberHouse"
-                          type="number"
+                          type="text"
                           name="numberHouse"
                           value={form.values.numberHouse}
                           onChange={form.handleChange}
@@ -236,7 +262,7 @@ const Cart = () => {
                     </div>
                     <div className="buttons">
                       <Button
-                        title="Clique aqui para continuar com a entrega"
+                        title="Clique aqui para continuar para a entrega"
                         type="submit"
                         onClick={() => checkDeliveryInfo()}
                       >
@@ -294,7 +320,7 @@ const Cart = () => {
                             <label htmlFor="cvv">CVV</label>
                             <input
                               id="cvv"
-                              type="number"
+                              type="text"
                               name="cvv"
                               value={form.values.cvv}
                               onChange={form.handleChange}
@@ -366,7 +392,7 @@ const Cart = () => {
                     <Overlay />
                     {/* AGRADECIMENTO */}
                     <Sidebar className="confirmText">
-                      <h3>Pedido realizado - 1213123</h3>
+                      <h3>Pedido realizado - XXXXXXXXX</h3>
 
                       <p>
                         Estamos felizes em informar que seu pedido já está em
