@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 import trash from '../../assets/images/trash.svg'
 import { ButtonContainer } from '../Button/styles'
@@ -28,7 +28,7 @@ export const CartContainer = styled.div`
   }
 `
 export const Sidebar = styled.aside`
-  background-color: ${cores.principal};
+  background-color: ${colors.main};
   padding: 32px 16px 0 16px;
   max-width: 360px;
   width: 100%;
@@ -48,18 +48,18 @@ export const Sidebar = styled.aside`
         font-size: 14px;
         line-height: 16px;
         font-weight: 700;
-        color: ${cores.secundaria};
+        color: ${colors.secondary};
         margin-top: 8px;
         display: block;
         margin-bottom: 8px;
       }
 
       input {
-        background-color: ${cores.secundaria};
+        background-color: ${colors.secondary};
         height: 32px;
         width: 100%;
         padding: 0 8px;
-        border: 2px; solid ${cores.secundaria}
+        border: 2px; solid ${colors.secondary}
         font-size: 14px;
 
         &.error {
@@ -70,7 +70,7 @@ export const Sidebar = styled.aside`
       h3 {
         font-size: 16px;
         line-height: 18px;
-        color: ${cores.secundaria};
+        color: ${colors.secondary};
         margin-bottom: 16px;
       }
 
@@ -127,7 +127,7 @@ export const Sidebar = styled.aside`
     }
 
   &.confirmText {
-    color: ${cores.fundo};
+    color: ${colors.white};
 
     h3 {
       font-size: 16px;
@@ -148,8 +148,8 @@ export const CartItem = styled.li`
   display: flex;
   position: relative;
   height: 100px;
-  background-color: ${cores.secundaria};
-  color: ${cores.principal};
+  background-color: ${colors.secondary};
+  color: ${colors.main};
   margin-bottom: 16px;
   padding: 8px;
 

@@ -1,12 +1,12 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 import { ButtonLink } from '../Button/styles'
 
 export const CardLoja = styled.div`
   background-color: #fff;
-  border: 1px solid ${cores.principal};
-  color: ${cores.principal};
+  border: 1px solid ${colors.main};
+  color: ${colors.main};
   max-width: 472px;
   width: 100%;
   position: relative;
@@ -43,7 +43,7 @@ export const InfosLoja = styled.div`
 `
 
 export const DescricaoLoja = styled.p`
-  color: ${cores.principal};
+  color: ${colors.main};
   font-weight: bold;
   font-size: 14px;
   line-height: 22px;

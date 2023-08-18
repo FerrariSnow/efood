@@ -6,11 +6,11 @@ import { RootReducer } from '../../store'
 
 import { close, remove } from '../../store/reducers/cart'
 
-import { formataPreco } from '../Product'
 import { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { usePurchaseMutation } from '../../services/api'
+import { parseToBrl } from '../../utils'
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
@@ -156,7 +156,7 @@ const Cart = () => {
                   <img src={item.foto} alt={item.nome} />
                   <div>
                     <h3>{item.nome}</h3>
-                    <p>{formataPreco(item.preco)}</p>
+                    <p>{parseToBrl(item.preco)}</p>
                   </div>
                   <button onClick={() => removeItem(item.id)} type="button" />
                 </CartItem>
@@ -164,7 +164,7 @@ const Cart = () => {
             </ul>
             <PriceCart>
               <p>Valor total</p>
-              <p>{formataPreco(getTotalPrice())}</p>
+              <p>{parseToBrl(getTotalPrice())}</p>
             </PriceCart>
             <Button
               title="Clique aqui para continuar com a entrega"

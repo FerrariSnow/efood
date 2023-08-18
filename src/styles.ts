@@ -1,9 +1,9 @@
 import { createGlobalStyle } from 'styled-components'
 
-export const cores = {
-  principal: '#E66767',
-  secundaria: '#FFEBD9',
-  fundo: '#FFF8F1'
+export const colors = {
+  main: '#E66767',
+  secondary: '#FFEBD9',
+  white: '#FFF8F1'
 }
 
 export const breakpoints = {
@@ -22,7 +22,7 @@ export const GlobalCSS = createGlobalStyle`
   }
 
   body {
-    background-color: ${cores.fundo}
+    background-color: ${colors.white}
   }
 
   .container {

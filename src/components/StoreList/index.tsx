@@ -8,13 +8,6 @@ export type Props = {
 }
 
 const StoreList = ({ stores }: Props) => {
-  // const formataPreco = (preco: number) => {
-  //   return new Intl.NumberFormat('pt-BR', {
-  //     style: 'currency',
-  //     currency: 'BRL'
-  //   }).format(preco)
-  // }
-
   const getStoreTags = (stores: StoreType) => {
     const tags = []
 
