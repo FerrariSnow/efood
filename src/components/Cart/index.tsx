@@ -222,7 +222,6 @@ const Cart = () => {
               </>
             ) : (
               <>
-                {/* recortei aqui embaixo \/ */}
                 {!deliveryInfo ? (
                   <>
                     <Overlay />
@@ -290,7 +289,7 @@ const Cart = () => {
                             <label htmlFor="numberHouse">Número</label>
                             <input
                               id="numberHouse"
-                              type="text"
+                              type="number"
                               name="numberHouse"
                               value={form.values.numberHouse}
                               onChange={form.handleChange}
@@ -358,7 +357,7 @@ const Cart = () => {
                             <label htmlFor="cardNumber">Número do cartão</label>
                             <input
                               id="cardNumber"
-                              type="text"
+                              type="number"
                               name="cardNumber"
                               value={form.values.cardNumber}
                               onChange={form.handleChange}
@@ -372,7 +371,7 @@ const Cart = () => {
                             <label htmlFor="cvv">CVV</label>
                             <input
                               id="cvv"
-                              type="text"
+                              type="number"
                               name="cvv"
                               value={form.values.cvv}
                               onChange={form.handleChange}
