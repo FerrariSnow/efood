@@ -1,7 +1,7 @@
 import Star from '../../assets/images/star.svg'
 import Button from '../Button'
 import Tag from '../Tag'
-import { CardLoja, DescricaoLoja, InfosLoja, TagsLoja } from './styles'
+import { StoreCard, StoreDescription, StoreInfos, StoreTags } from './styles'
 
 type Props = {
   imagem: string
@@ -13,24 +13,24 @@ type Props = {
 }
 
 const Store = ({ imagem, nome, nota, descricao, tags, to }: Props) => (
-  <CardLoja>
+  <StoreCard>
     <img src={imagem} alt={nome} />
-    <TagsLoja>
+    <StoreTags>
       {tags.map((tag) => (
         <Tag key={tag}>{tag}</Tag>
       ))}
-    </TagsLoja>
-    <InfosLoja>
+    </StoreTags>
+    <StoreInfos>
       <h3>{nome} </h3>
       <div>
         {nota} <img src={Star} />
       </div>
-    </InfosLoja>
-    <DescricaoLoja>{descricao}</DescricaoLoja>
+    </StoreInfos>
+    <StoreDescription>{descricao}</StoreDescription>
     <Button type="link" to={to} title="Saiba mais sobre a loja">
       <>Saiba mais</>
     </Button>
-  </CardLoja>
+  </StoreCard>
 )
 
 export default Store

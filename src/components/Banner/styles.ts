@@ -17,7 +17,7 @@ export const Container = styled.div`
   }
 `
 
-export const TituloLoja = styled.h2`
+export const StoreTitle = styled.h2`
   position: absolute;
   display: block;
   bottom: 32px;
@@ -31,7 +31,7 @@ export const TituloLoja = styled.h2`
     line-height: 32px;
   }
 `
-export const TipoLoja = styled.p`
+export const StoreTypeFoods = styled.p`
   position: absolute;
   width: 101px;
   height: 33.25px;

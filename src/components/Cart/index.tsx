@@ -13,12 +13,11 @@ import { usePurchaseMutation } from '../../services/api'
 import { parseToBrl } from '../../utils'
 
 const Cart = () => {
+  const [purchase, { data, isSuccess }] = usePurchaseMutation()
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
-  const [carrinhoAtivo, setCarrinhoAtivo] = useState(true)
+  const [cartOn, setCartOn] = useState(true)
   const [deliveryInfo, setDeliveryInfo] = useState(false)
   const [paymentInfo, setPaymentInfo] = useState(false)
-
-  const [purchase] = usePurchaseMutation()
 
   const form = useFormik({
     initialValues: {
@@ -85,7 +84,10 @@ const Cart = () => {
             }
           }
         },
-        products: [{ id: 18, price: 18 }]
+        products: items.map((item) => ({
+          id: item.id,
+          price: item.preco
+        }))
       })
     }
   })
@@ -125,6 +127,7 @@ const Cart = () => {
       return setPaymentInfo(false)
     } else {
       return setPaymentInfo(true)
+      console.log(data)
     }
   }
 
@@ -146,7 +149,7 @@ const Cart = () => {
 
   return (
     <CartContainer className={isOpen ? 'is-open' : ''}>
-      {carrinhoAtivo ? (
+      {cartOn ? (
         <>
           <Overlay onClick={closeCart} />
           <Sidebar>
@@ -169,7 +172,7 @@ const Cart = () => {
             <Button
               title="Clique aqui para continuar com a entrega"
               type="button"
-              onClick={() => setCarrinhoAtivo(false)}
+              onClick={() => setCartOn(false)}
             >
               <>Continuar com a entrega</>
             </Button>
@@ -179,109 +182,158 @@ const Cart = () => {
         <>
           {/* CHECKOUT */}
           <CartContainer className={isOpen ? 'is-open' : ''}>
-            {!deliveryInfo ? (
+            {isSuccess && data ? (
               <>
                 <Overlay />
-                <Sidebar className="deliveryInfos">
-                  <form onSubmit={form.handleSubmit} className="form">
-                    <h3>Entrega</h3>
-                    <div>
-                      <label htmlFor="name">Quem irá receber</label>
-                      <input
-                        id="name"
-                        type="text"
-                        name="name"
-                        value={form.values.name}
-                        onChange={form.handleChange}
-                        onBlur={form.handleBlur}
-                        className={checkInputHasError('name') ? 'error' : ''}
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="address">Endereço</label>
-                      <input
-                        id="address"
-                        type="text"
-                        name="address"
-                        value={form.values.address}
-                        onChange={form.handleChange}
-                        onBlur={form.handleBlur}
-                        className={checkInputHasError('address') ? 'error' : ''}
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="city">Cidade</label>
-                      <input
-                        id="city"
-                        type="text"
-                        name="city"
-                        value={form.values.city}
-                        onChange={form.handleChange}
-                        onBlur={form.handleBlur}
-                        className={checkInputHasError('city') ? 'error' : ''}
-                      />
-                    </div>
-                    <div className="twoInputCenter">
-                      <div>
-                        <label htmlFor="cep">CEP</label>
-                        <input
-                          id="cep"
-                          type="text"
-                          name="cep"
-                          value={form.values.cep}
-                          onChange={form.handleChange}
-                          onBlur={form.handleBlur}
-                          className={checkInputHasError('cep') ? 'error' : ''}
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="numberHouse">Número</label>
-                        <input
-                          id="numberHouse"
-                          type="text"
-                          name="numberHouse"
-                          value={form.values.numberHouse}
-                          onChange={form.handleChange}
-                          onBlur={form.handleBlur}
-                          className={
-                            checkInputHasError('numberHouse') ? 'error' : ''
-                          }
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <label htmlFor="optional">Complemento(opcional)</label>
-                      <input
-                        id="optional"
-                        type="text"
-                        name="optional"
-                        value={form.values.optional}
-                        onChange={form.handleChange}
-                        onBlur={form.handleBlur}
-                      />
-                    </div>
-                    <div className="buttons">
-                      <Button
-                        title="Clique aqui para continuar para a entrega"
-                        type="submit"
-                        onClick={() => checkDeliveryInfo()}
-                      >
-                        <>Continuar com o pagamento</>
-                      </Button>
-                      <Button
-                        title="Clique aqui para voltar para o carrinho"
-                        type="button"
-                        onClick={() => setCarrinhoAtivo(true)}
-                      >
-                        <>Voltar para o carrinho</>
-                      </Button>
-                    </div>
-                  </form>
+                <Sidebar className="confirmText">
+                  <h3>Pedido realizado - {data.orderId}</h3>
+
+                  <p>
+                    Estamos felizes em informar que seu pedido já está em
+                    processo de preparação e, em breve, será entregue no
+                    endereço fornecido.
+                  </p>
+                  <p>
+                    Gostaríamos de ressaltar que nossos entregadores não estão
+                    autorizados a realizar cobranças extras.{' '}
+                  </p>
+                  <p>
+                    Lembre-se da importância de higienizar as mãos após o
+                    recebimento do pedido, garantindo assim sua segurança e
+                    bem-estar durante a refeição.
+                  </p>
+                  <p>
+                    Esperamos que desfrute de uma deliciosa e agradável
+                    experiência gastronômica. Bom apetite!
+                  </p>
+                  <Button
+                    title="Concluir pedido"
+                    type="button"
+                    onClick={() => {
+                      setCartOn(true)
+                      setDeliveryInfo(false)
+                      setPaymentInfo(false)
+                      closeCart()
+                    }}
+                  >
+                    <>Concluir pedido</>
+                  </Button>
                 </Sidebar>
               </>
             ) : (
               <>
-                {!paymentInfo ? ( // PAGAMENTO
+                {/* recortei aqui embaixo \/ */}
+                {!deliveryInfo ? (
+                  <>
+                    <Overlay />
+                    <Sidebar className="deliveryInfos">
+                      <form className="form">
+                        <h3>Entrega</h3>
+                        <div>
+                          <label htmlFor="name">Quem irá receber</label>
+                          <input
+                            id="name"
+                            type="text"
+                            name="name"
+                            value={form.values.name}
+                            onChange={form.handleChange}
+                            onBlur={form.handleBlur}
+                            className={
+                              checkInputHasError('name') ? 'error' : ''
+                            }
+                          />
+                        </div>
+                        <div>
+                          <label htmlFor="address">Endereço</label>
+                          <input
+                            id="address"
+                            type="text"
+                            name="address"
+                            value={form.values.address}
+                            onChange={form.handleChange}
+                            onBlur={form.handleBlur}
+                            className={
+                              checkInputHasError('address') ? 'error' : ''
+                            }
+                          />
+                        </div>
+                        <div>
+                          <label htmlFor="city">Cidade</label>
+                          <input
+                            id="city"
+                            type="text"
+                            name="city"
+                            value={form.values.city}
+                            onChange={form.handleChange}
+                            onBlur={form.handleBlur}
+                            className={
+                              checkInputHasError('city') ? 'error' : ''
+                            }
+                          />
+                        </div>
+                        <div className="twoInputCenter">
+                          <div>
+                            <label htmlFor="cep">CEP</label>
+                            <input
+                              id="cep"
+                              type="text"
+                              name="cep"
+                              value={form.values.cep}
+                              onChange={form.handleChange}
+                              onBlur={form.handleBlur}
+                              className={
+                                checkInputHasError('cep') ? 'error' : ''
+                              }
+                            />
+                          </div>
+                          <div>
+                            <label htmlFor="numberHouse">Número</label>
+                            <input
+                              id="numberHouse"
+                              type="text"
+                              name="numberHouse"
+                              value={form.values.numberHouse}
+                              onChange={form.handleChange}
+                              onBlur={form.handleBlur}
+                              className={
+                                checkInputHasError('numberHouse') ? 'error' : ''
+                              }
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <label htmlFor="optional">
+                            Complemento(opcional)
+                          </label>
+                          <input
+                            id="optional"
+                            type="text"
+                            name="optional"
+                            value={form.values.optional}
+                            onChange={form.handleChange}
+                            onBlur={form.handleBlur}
+                          />
+                        </div>
+                        <div className="buttons">
+                          <Button
+                            title="Clique aqui para continuar para a pagamento"
+                            type="button"
+                            onClick={() => checkDeliveryInfo()}
+                          >
+                            <>Continuar com o pagamento</>
+                          </Button>
+                          <Button
+                            title="Clique aqui para voltar para o carrinho"
+                            type="button"
+                            onClick={() => setCartOn(true)}
+                          >
+                            <>Voltar para o carrinho</>
+                          </Button>
+                        </div>
+                      </form>
+                    </Sidebar>
+                  </>
+                ) : (
                   <>
                     <Overlay />
                     <Sidebar className="paymentInfos">
@@ -372,7 +424,6 @@ const Cart = () => {
                           <Button
                             title="Clique aqui para finalizar o pagamento"
                             type="submit"
-                            onClick={() => checkPaymentInfo()}
                           >
                             <>Finalizar pagamento</>
                           </Button>
@@ -385,45 +436,6 @@ const Cart = () => {
                           </Button>
                         </div>
                       </form>
-                    </Sidebar>
-                  </>
-                ) : (
-                  <>
-                    <Overlay />
-                    {/* AGRADECIMENTO */}
-                    <Sidebar className="confirmText">
-                      <h3>Pedido realizado - XXXXXXXXX</h3>
-
-                      <p>
-                        Estamos felizes em informar que seu pedido já está em
-                        processo de preparação e, em breve, será entregue no
-                        endereço fornecido.
-                      </p>
-                      <p>
-                        Gostaríamos de ressaltar que nossos entregadores não
-                        estão autorizados a realizar cobranças extras.{' '}
-                      </p>
-                      <p>
-                        Lembre-se da importância de higienizar as mãos após o
-                        recebimento do pedido, garantindo assim sua segurança e
-                        bem-estar durante a refeição.
-                      </p>
-                      <p>
-                        Esperamos que desfrute de uma deliciosa e agradável
-                        experiência gastronômica. Bom apetite!
-                      </p>
-                      <Button
-                        title="Concluir pedido"
-                        type="button"
-                        onClick={() => {
-                          setCarrinhoAtivo(true)
-                          setDeliveryInfo(false)
-                          setPaymentInfo(false)
-                          closeCart()
-                        }}
-                      >
-                        <>Concluir pedido</>
-                      </Button>
                     </Sidebar>
                   </>
                 )}
