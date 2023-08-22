@@ -1,6 +1,5 @@
 import Store from '../Store'
 import { ContainerStores } from './styles'
-import { ExtendedStoreType, StoreType } from '../../pages/Home'
 import { getDescricao } from '../Product'
 
 export type Props = {

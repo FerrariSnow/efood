@@ -34,6 +34,13 @@ export const Sidebar = styled.aside`
   width: 100%;
   z-index: 1;
 
+  .empty-text {
+    font-size: 14px;
+    line-height: 22px;
+    color: ${colors.white};
+    text-align: center;
+  }
+
   @media (max-width: ${breakpoints.celular}) {
     max-width: 70%;
   }

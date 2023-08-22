@@ -29,7 +29,7 @@ export const HeaderText = styled.p`
     margin-bottom: 16px;
   }
 `
-export const CartButton = styled.a`
+export const CartButton = styled.span`
   display: flex;
   cursor: pointer;
 `

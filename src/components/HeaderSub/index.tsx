@@ -24,7 +24,7 @@ const HeaderSub = () => {
           <img src={Logo} alt="Logo da eFood" />
         </Link>
         <HeaderText>
-          <CartButton onClick={openCart}>
+          <CartButton role="button" onClick={openCart}>
             {items.length} produto(s) no carrinho
           </CartButton>
         </HeaderText>

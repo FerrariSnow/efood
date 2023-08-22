@@ -1,23 +1,23 @@
 import { useDispatch, useSelector } from 'react-redux'
-import Button from '../Button'
-
-import { CartContainer, Overlay, Sidebar, CartItem, PriceCart } from './styles'
-import { RootReducer } from '../../store'
-
-import { close, remove } from '../../store/reducers/cart'
-
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import InputMask from 'react-input-mask'
+
+import Button from '../Button'
+import { CartContainer, Overlay, Sidebar, CartItem, PriceCart } from './styles'
+import { RootReducer } from '../../store'
+import { close, remove } from '../../store/reducers/cart'
 import { usePurchaseMutation } from '../../services/api'
 import { parseToBrl } from '../../utils'
+import { clear } from '../../store/reducers/cart'
 
 const Cart = () => {
-  const [purchase, { data, isSuccess }] = usePurchaseMutation()
+  const [purchase, { data, isSuccess, isLoading }] = usePurchaseMutation()
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
   const [cartOn, setCartOn] = useState(true)
   const [deliveryInfo, setDeliveryInfo] = useState(false)
-  const [paymentInfo, setPaymentInfo] = useState(false)
+  const dispatch = useDispatch()
 
   const form = useFormik({
     initialValues: {
@@ -100,8 +100,6 @@ const Cart = () => {
     return hasError
   }
 
-  // console.log(form)
-
   const checkDeliveryInfo = () => {
     if (
       !form.values.name ||
@@ -115,23 +113,6 @@ const Cart = () => {
       return setDeliveryInfo(true)
     }
   }
-
-  const checkPaymentInfo = () => {
-    if (
-      !form.values.cardName ||
-      !form.values.cardNumber ||
-      !form.values.cvv ||
-      !form.values.expiresMonth ||
-      !form.values.expiresYear
-    ) {
-      return setPaymentInfo(false)
-    } else {
-      return setPaymentInfo(true)
-      console.log(data)
-    }
-  }
-
-  const dispatch = useDispatch()
 
   const closeCart = () => {
     dispatch(close())
@@ -147,35 +128,53 @@ const Cart = () => {
     dispatch(remove(id))
   }
 
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(clear())
+    }
+  }, [isSuccess, dispatch])
+
   return (
     <CartContainer className={isOpen ? 'is-open' : ''}>
       {cartOn ? (
         <>
           <Overlay onClick={closeCart} />
           <Sidebar>
-            <ul>
-              {items.map((item) => (
-                <CartItem key={item.id}>
-                  <img src={item.foto} alt={item.nome} />
-                  <div>
-                    <h3>{item.nome}</h3>
-                    <p>{parseToBrl(item.preco)}</p>
-                  </div>
-                  <button onClick={() => removeItem(item.id)} type="button" />
-                </CartItem>
-              ))}
-            </ul>
-            <PriceCart>
-              <p>Valor total</p>
-              <p>{parseToBrl(getTotalPrice())}</p>
-            </PriceCart>
-            <Button
-              title="Clique aqui para continuar com a entrega"
-              type="button"
-              onClick={() => setCartOn(false)}
-            >
-              <>Continuar com a entrega</>
-            </Button>
+            {items.length > 0 ? (
+              <>
+                <ul>
+                  {items.map((item) => (
+                    <CartItem key={item.id}>
+                      <img src={item.foto} alt={item.nome} />
+                      <div>
+                        <h3>{item.nome}</h3>
+                        <p>{parseToBrl(item.preco)}</p>
+                      </div>
+                      <button
+                        onClick={() => removeItem(item.id)}
+                        type="button"
+                      />
+                    </CartItem>
+                  ))}
+                </ul>
+                <PriceCart>
+                  <p>Valor total</p>
+                  <p>{parseToBrl(getTotalPrice())}</p>
+                </PriceCart>
+                <Button
+                  title="Clique aqui para continuar com a entrega"
+                  type="button"
+                  onClick={() => setCartOn(false)}
+                >
+                  <>Continuar com a entrega</>
+                </Button>
+              </>
+            ) : (
+              <p className="empty-text">
+                O carrinho está vazio, adicione pelo menos 1 produto para
+                continuar com a compra.
+              </p>
+            )}
           </Sidebar>
         </>
       ) : (
@@ -212,7 +211,6 @@ const Cart = () => {
                     onClick={() => {
                       setCartOn(true)
                       setDeliveryInfo(false)
-                      setPaymentInfo(false)
                       closeCart()
                     }}
                   >
@@ -273,13 +271,14 @@ const Cart = () => {
                         <div className="twoInputCenter">
                           <div>
                             <label htmlFor="cep">CEP</label>
-                            <input
+                            <InputMask
                               id="cep"
                               type="text"
                               name="cep"
                               value={form.values.cep}
                               onChange={form.handleChange}
                               onBlur={form.handleBlur}
+                              mask="99999-999"
                               className={
                                 checkInputHasError('cep') ? 'error' : ''
                               }
@@ -355,13 +354,14 @@ const Cart = () => {
                         <div className="twoInputs">
                           <div className="cardNumberClass">
                             <label htmlFor="cardNumber">Número do cartão</label>
-                            <input
+                            <InputMask
                               id="cardNumber"
-                              type="number"
+                              type="text"
                               name="cardNumber"
                               value={form.values.cardNumber}
                               onChange={form.handleChange}
                               onBlur={form.handleBlur}
+                              mask="9999 9999 9999 9999"
                               className={
                                 checkInputHasError('cardNumber') ? 'error' : ''
                               }
@@ -369,13 +369,14 @@ const Cart = () => {
                           </div>
                           <div className="cvv">
                             <label htmlFor="cvv">CVV</label>
-                            <input
+                            <InputMask
                               id="cvv"
-                              type="number"
+                              type="text"
                               name="cvv"
                               value={form.values.cvv}
                               onChange={form.handleChange}
                               onBlur={form.handleBlur}
+                              mask="999"
                               className={
                                 checkInputHasError('cvv') ? 'error' : ''
                               }
@@ -387,13 +388,15 @@ const Cart = () => {
                             <label htmlFor="expiresMonth">
                               Mês de vencimento
                             </label>
-                            <input
+                            <InputMask
                               id="expiresMonth"
-                              type="number"
+                              type="text"
                               name="expiresMonth"
                               value={form.values.expiresMonth}
                               onChange={form.handleChange}
                               onBlur={form.handleBlur}
+                              mask="99"
+                              maxLength={12}
                               className={
                                 checkInputHasError('expiresMonth')
                                   ? 'error'
@@ -405,13 +408,14 @@ const Cart = () => {
                             <label htmlFor="expiresYear">
                               Ano de vencimento
                             </label>
-                            <input
+                            <InputMask
                               id="expiresYear"
-                              type="number"
+                              type="text"
                               name="expiresYear"
                               value={form.values.expiresYear}
                               onChange={form.handleChange}
                               onBlur={form.handleBlur}
+                              mask="99"
                               className={
                                 checkInputHasError('expiresYear') ? 'error' : ''
                               }
@@ -423,8 +427,13 @@ const Cart = () => {
                           <Button
                             title="Clique aqui para finalizar o pagamento"
                             type="submit"
+                            disabled={isLoading}
                           >
-                            <>Finalizar pagamento</>
+                            <>
+                              {isLoading
+                                ? 'Finalizando pedido..'
+                                : 'Finalizar pedido'}
+                            </>
                           </Button>
                           <Button
                             title="Clique aqui para voltar e editar dados da entrega"

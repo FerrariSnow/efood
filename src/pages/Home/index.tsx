@@ -5,33 +5,6 @@ import StoreList from '../../components/StoreList'
 import { useGetStoresQuery } from '../../services/api'
 import Loader from '../../components/Loader'
 
-export type StoreType = {
-  id: number
-  titulo: string
-  destacado?: boolean
-  tipo: string
-  avaliacao: string
-  cardapio: Array<Foods>
-  descricao: string
-  capa: string
-}
-
-export type ExtendedStoreType = StoreType[] & {
-  length: number
-  pop(): StoreType | undefined
-  push(...items: StoreType[]): number
-  concat(...items: ConcatArray<StoreType>[]): StoreType[]
-}
-
-export type Foods = {
-  id: number
-  foto: string
-  preco: number
-  nome: string
-  descricao: string
-  porcao: string
-}
-
 const Home = () => {
   const { data: stores } = useGetStoresQuery()
 

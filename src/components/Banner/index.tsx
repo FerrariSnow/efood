@@ -1,4 +1,3 @@
-import { StoreType } from '../../pages/Home'
 import { Container, StoreTypeFoods, StoreTitle } from './styles'
 
 export type Props = {
