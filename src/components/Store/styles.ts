@@ -1,12 +1,12 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 import { ButtonLink } from '../Button/styles'
 
-export const CardLoja = styled.div`
+export const StoreCard = styled.div`
   background-color: #fff;
-  border: 1px solid ${cores.principal};
-  color: ${cores.principal};
+  border: 1px solid ${colors.main};
+  color: ${colors.main};
   max-width: 472px;
   width: 100%;
   position: relative;
@@ -27,7 +27,7 @@ export const CardLoja = styled.div`
   }
 `
 
-export const InfosLoja = styled.div`
+export const StoreInfos = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,14 +42,14 @@ export const InfosLoja = styled.div`
   }
 `
 
-export const DescricaoLoja = styled.p`
-  color: ${cores.principal};
+export const StoreDescription = styled.p`
+  color: ${colors.main};
   font-weight: bold;
   font-size: 14px;
   line-height: 22px;
   padding: 0 8px 10px 8px;
 `
-export const TagsLoja = styled.div`
+export const StoreTags = styled.div`
   position: absolute;
   top: 16px;
   right: 16px;

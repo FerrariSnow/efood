@@ -9,23 +9,23 @@ import { FooterContainer, SocialMedias } from './styles'
 const Footer = () => (
   <FooterContainer>
     <div className="container">
-      <Link to="/">
+      <Link title="Clique aqui para voltar para a página inicial" to="/">
         <img src={Logo} alt="Logo da eFood" />
       </Link>
       <SocialMedias>
-        <Link to="#">
+        <Link title="Ícone do Instagram" to="#">
           <img
             src={Insta}
             alt="Botões sem redes sociais cadastradas, apenas para fins visuais"
           />
         </Link>
-        <Link to="#">
+        <Link title="Ícone do Facebook" to="#">
           <img
             src={Facebook}
             alt="Botões sem redes sociais cadastradas, apenas para fins visuais"
           />
         </Link>
-        <Link to="#">
+        <Link title="Ícone do Twitter" to="#">
           <img
             src={Twitter}
             alt="Botões sem redes sociais cadastradas, apenas para fins visuais"

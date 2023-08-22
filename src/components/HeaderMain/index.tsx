@@ -1,12 +1,12 @@
 import { HeaderContainer, HeaderTitle } from './styles'
 
-import CabecalhoImg from '../../assets/images/cabecalho.png'
+import HeaderImg from '../../assets/images/cabecalho.png'
 import Logo from '../../assets/images/logo.png'
 import { Link } from 'react-router-dom'
 
 const HeaderMain = () => (
-  <HeaderContainer style={{ backgroundImage: `url(${CabecalhoImg})` }}>
-    <Link to="/">
+  <HeaderContainer style={{ backgroundImage: `url(${HeaderImg})` }}>
+    <Link title="Logo da loja" to="/">
       <img src={Logo} alt="Logo da eFood" />
     </Link>
     <HeaderTitle>

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 
 export const HeaderContainer = styled.header`
   padding: 40px;
@@ -22,14 +22,14 @@ export const HeaderText = styled.p`
   line-height: 21px;
   text-align: center;
 
-  color: ${cores.principal};
+  color: ${colors.main};
 
   @media (max-width: 550px) {
     margin-top: 16px;
     margin-bottom: 16px;
   }
 `
-export const CartButton = styled.a`
+export const CartButton = styled.span`
   display: flex;
   cursor: pointer;
 `

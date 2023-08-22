@@ -1,11 +1,11 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 
 export const FooterContainer = styled.footer`
-  background-color: ${cores.secundaria};
+  background-color: ${colors.secondary};
   padding: 40px;
   text-align: center;
-  color: ${cores.principal};
+  color: ${colors.main};
   margin-top: 120px;
 
   img {

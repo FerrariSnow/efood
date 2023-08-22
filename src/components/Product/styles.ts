@@ -1,15 +1,16 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 import { ButtonContainer } from '../Button/styles'
 
 export const CardProduct = styled.div`
-  background-color: ${cores.principal};
-  color: ${cores.secundaria};
+  background-color: ${colors.main};
+  color: ${colors.secondary};
   padding: 8px;
   max-width: 320px;
   max-height: 340px;
   width: 100%;
   height: auto;
+  cursor: pointer;
 
   img {
     max-width: 320px;
@@ -72,8 +73,8 @@ export const Modal = styled.div`
     z-index: 1;
     display: flex;
     padding: 32px;
-    color: ${cores.fundo};
-    background-color: ${cores.principal};
+    color: ${colors.white};
+    background-color: ${colors.main};
 
     @media (max-width: ${breakpoints.desktop}) {
       max-width: 80%;

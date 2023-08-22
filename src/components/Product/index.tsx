@@ -9,11 +9,10 @@ import {
 
 import Close from '../../assets/images/close.svg'
 import { useState } from 'react'
-import { useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
 import { add, open } from '../../store/reducers/cart'
-import { Foods, StoreType } from '../../pages/Home'
+import { parseToBrl } from '../../utils'
 
 type cardapio = {
   id: number
@@ -28,13 +27,6 @@ type Props = {
   pratos: cardapio
 }
 
-export const formataPreco = (preco: number) => {
-  return new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL'
-  }).format(preco)
-}
-
 export const getDescricao = (description: string) => {
   if (description.length > 135) {
     return description.slice(0, 135) + '...'
@@ -43,8 +35,6 @@ export const getDescricao = (description: string) => {
 }
 
 const Product = ({ pratos }: Props) => {
-  const { id } = useParams()
-
   const [modalIsOpen, setModalIsOpen] = useState(false)
 
   const dispatch = useDispatch()
@@ -86,7 +76,7 @@ const Product = ({ pratos }: Props) => {
               title="Adicionar produto ao carrinho"
               onClick={addToCart}
             >
-              <>Adicionar ao carrinho - {formataPreco(pratos.preco)}</>
+              <>Adicionar ao carrinho - {parseToBrl(pratos.preco)}</>
             </Button>
           </div>
           <div className="close">

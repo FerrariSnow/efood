@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const HeaderContainer = styled.header`
   padding-top: 40px;
@@ -19,7 +19,7 @@ export const HeaderTitle = styled.h1`
   font-size: 36px;
   line-height: 42px;
   text-align: center;
-  color: ${cores.principal};
+  color: ${colors.main};
   padding-top: 144px;
 
   @media (max-width: ${breakpoints.tablet}) {

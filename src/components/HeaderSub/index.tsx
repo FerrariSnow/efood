@@ -1,6 +1,6 @@
 import { HeaderContainer, HeaderText, CartButton } from './styles'
 
-import CabecalhoImg from '../../assets/images/cabecalho.png'
+import HeaderImg from '../../assets/images/cabecalho.png'
 import Logo from '../../assets/images/logo.png'
 import { Link } from 'react-router-dom'
 
@@ -18,13 +18,13 @@ const HeaderSub = () => {
 
   return (
     <>
-      <HeaderContainer style={{ backgroundImage: `url(${CabecalhoImg})` }}>
+      <HeaderContainer style={{ backgroundImage: `url(${HeaderImg})` }}>
         <HeaderText>Restaurantes</HeaderText>
-        <Link to="/">
+        <Link title="Clique aqui para ir para a página inicial" to="/">
           <img src={Logo} alt="Logo da eFood" />
         </Link>
         <HeaderText>
-          <CartButton onClick={openCart}>
+          <CartButton role="button" onClick={openCart}>
             {items.length} produto(s) no carrinho
           </CartButton>
         </HeaderText>
