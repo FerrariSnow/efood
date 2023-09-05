@@ -336,7 +336,10 @@ const Cart = () => {
                     <Overlay />
                     <Sidebar className="paymentInfos">
                       <form onSubmit={form.handleSubmit} className="form">
-                        <h3>Pagamento - Valor a pagar R$ 180,18</h3>
+                        <h3>
+                          Pagamento - Valor a pagar{' '}
+                          {parseToBrl(getTotalPrice())}
+                        </h3>
                         <div>
                           <label htmlFor="cardName">Nome no cartão</label>
                           <input
